@@ -40,3 +40,4 @@ DK BLUE
 
 * note: level 0 rent is doubled if all properties of same color are owned by the same persen
 * no levels may be constructed until one player owns all properties of the same color
+* no property may be upgraded to level 2 until all in that group are level one, none can be level 3 until all are lv 2, etc
