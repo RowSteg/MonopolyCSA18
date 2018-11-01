@@ -13,7 +13,10 @@ public class Gameboard {
 		//board[10][5] = railroad
 		//board[5][10] = railroad
 		
+		//for loop to make spaces?
+		//list of property names?
 		
+		System.out.println("help");
 		
 	}
 }
