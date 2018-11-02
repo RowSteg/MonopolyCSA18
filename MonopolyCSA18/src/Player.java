@@ -28,6 +28,10 @@ public class Player {
 		return amountOfMoney;
 	}
 	
+	public void setAmountOfMoney(int x) {
+		this.amountOfMoney = x;
+	}
+	
 	public String getName() {
 		return name;
 	}

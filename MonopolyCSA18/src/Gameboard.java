@@ -2,7 +2,7 @@
 public class Gameboard {
 	private Space[][] board;
 	
-	Gameboard(){
+	public Gameboard(){
 		//board[0][0] = free parking
 		//board[10][0] = jail
 		//board[0][10] = go to jail
@@ -13,8 +13,12 @@ public class Gameboard {
 		//board[10][5] = railroad
 		//board[5][10] = railroad
 		
+		//board[6][10] = chance draw
+		//board[10][3] = chance draw
+		//
+		
 		//for loop to make spaces?
-		//list of property names?
+		//iterates through list of property names?
 		
 		System.out.println("help");
 		
