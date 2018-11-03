@@ -1,9 +1,9 @@
 import java.util.HashMap;
 public class Property extends Space{
 
-	private final String color;
+	private String color;
 	
-	private final int price;
+	private int price;
 	private int mortgage;
 	private int housePrice;
 	
@@ -70,6 +70,7 @@ public class Property extends Space{
 		return mortgage;
 	}
 	
+	//House price
 	public int getHousePrice() {
 		return housePrice;
 	}
