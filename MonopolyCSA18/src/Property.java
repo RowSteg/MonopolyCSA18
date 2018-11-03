@@ -14,11 +14,11 @@ public class Property extends Space{
 	private Player owner;
 	
 	
-	public Property(String name, int xPos, int yPos, String color, int price, int mortgage, int housePrice, int... rents) { //rents should always be an array of length 6
+	public Property(String name, int xPos, int yPos, String color, int price, int housePrice, int... rents) { //rents should always be an array of length 6
 		super(name, xPos, yPos);
 		this.color = color;
 		this.price = price;
-		this.mortgage = mortgage;
+		this.mortgage = price/2;
 		this.housePrice = housePrice;
 		this.level = 0;
 		this.owned  = false;
