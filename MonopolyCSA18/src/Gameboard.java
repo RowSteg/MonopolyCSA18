@@ -1,26 +1,45 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Gameboard {
 	private Space[][] board;
 	
-	public Gameboard(){
-		//board[0][0] = free parking
-		//board[10][0] = jail
-		//board[0][10] = go to jail
-		//board[10][10] = go
-		
-		//board[0][5] = railroad
-		//board[5][0] = railroad
-		//board[10][5] = railroad
-		//board[5][10] = railroad
-		
-		//board[6][10] = chance draw
-		//board[10][3] = chance draw
-		//
-		
-		//for loop to make spaces?
-		//iterates through list of property names?
-		
-		System.out.println("help");
+	public Gameboard(String inFile){
+		try {
+			Scanner in = new Scanner(new File(inFile));
+			
+			int row = 10;
+			int col = 10;
+			
+			while(col>=0) {
+				
+				
+				col--;
+			}
+			
+			while(row>=0) {
+				
+				
+				row--;
+			}
+			
+			while(col<=10) {
+				
+				
+				col++;
+			}
+			
+			while(row<10) {
+				
+				
+				row++;
+			}
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

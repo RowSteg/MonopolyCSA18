@@ -1,14 +1,8 @@
 
 public class ChanceAndChest {
+
 	
-	private String title;
-	private int moneyChange;
-	
-	public ChanceAndChest(String title, int moneyChange) {
+	public ChanceAndChest(String name, int xPos, int yPos, String color, int price, int housePrice, int... rents) {
 		
-	}
-	
-	public void Charge(Player player1){
-		player1.setAmountOfMoney(player1.getAmountOfMoney() + moneyChange);
 	}
 }
