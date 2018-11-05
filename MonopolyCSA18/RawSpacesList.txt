@@ -1,0 +1,23 @@
+ PROPERTY NAME               INIT PRICE |HOUSE COST |INIT RENT|RENT 1 |RENT 2 |RENT 3 |RENT 4 |RENT 5 |COLOR
+  Mediterranean Avenue      60          50          2         10      30      90      160     250     BROWN
+  Baltic Avenue             60          50          4         20      60      180     320     450     BROWN
+  Oriental Avenue           100         50          6         30      90      270     400     550     LT BLUE
+  Vermont Avenue            100         50          6         30      90      270     400     550     LT BLUE
+  Connecticut Avenue        120         50          8         40      100     300     450     600     LT BLUE
+  St. Charles Place         140         100         10        50      150     450     625     750     PURPLE
+  States Avenue             140         100         10        50      150     450     625     750     PURPLE
+  Virginia Avenue           160         100         12        60      180     500     700     900     PURPLE
+  St. James Place           180         100         14        70      200     550     750     950     ORANGE
+  Tennessee Avenue          180         100         14        70      200     550     750     950     ORANGE
+  New York Avenue           200         100         16        80      220     600     800     1000    ORANGE
+  Kentucky Avenue           220         150         18        90      250     700     875     1050    RED
+  Indiana Avenue            220         150         18        90      250     700     875     1050    RED
+  Illinois Avenue           240         150         20        100     300     750     925     1100    RED
+  Atlantic Avenue           260         150         22        110     330     800     975     1150    YELLOW
+  Ventnor Avenue            260         150         22        110     330     800     975     1150    YELLOW
+  Marvin Gardens            280         150         24        120     360     850     1025    1200    YELLOW
+  Pacific Avenue            300         200         26        130     390     900     1100    1275    GREEN
+  North Carolina Avenue     300         200         26        130     390     900     1100    1275    GREEN
+  Pennsylvania Avenue       320         200         28        150     450     1000    1200    1400    GREEN
+  Park Place                350         200         35        175     500     1100    1300    1500    DK BLUE
+  Broadway                  400         200         50        200     600     1400    1700    2000    DK BLUE
