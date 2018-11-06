@@ -1,0 +1,13 @@
+RAILROADS
+Reading, Pennsylvania, B&O, Short Line
+Each cost 200
+Rent: 25 if 1 owned, 50 if 2 owned, 100 if 3 owned, 200 if 4 owned
+Mortgage value 100
+
+
+UTILITIES
+Electric Company, Water Works
+Each cost 150
+If one is owned, rent = roll dice * 4
+If both are owned, rent = roll dice * 10
+Mortgage value 75
