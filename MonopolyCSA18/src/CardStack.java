@@ -6,15 +6,15 @@ import java.util.LinkedList;
 
 public class CardStack {
 	Deque<Card> cardStack = new LinkedList<Card>();
-	Deque<Card> cardStackCopy = new LinkedList<Card>();
+	Deque<Card> cardStackCopy = new LinkedList<Card>(); //copy to reset deck
 	public CardStack(Deque<Card> cardStack) {
 		this.cardStack = cardStack;
-		cardStackCopy = cardStack;
+		cardStackCopy = cardStack; 
 	}
 	public void addCard(Card card) {
 		cardStack.addFirst(card);
 	}
-	public Card drawCard() {
+	public Card drawCard() { //removes Card from top of stack
 		Card card = cardStack.getFirst();
 		cardStack.remove();
 		return card;

@@ -1,4 +1,3 @@
-
 public class Card {
 	private final String event;
 	
@@ -8,5 +7,5 @@ public class Card {
 	
 	public String getEvent() {
 		return this.event;
-	}
+	} 
 }
