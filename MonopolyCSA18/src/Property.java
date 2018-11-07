@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 public class Property extends Space{
 
@@ -22,6 +23,7 @@ public class Property extends Space{
 		this.housePrice = housePrice;
 		this.level = 0;
 		this.owned  = false;
+		this.rents = new HashMap<Integer, Integer>();
 		for(int i = 0; i < 6; i++) {
 			this.rents.put(i,  rents[i]);
 		}
