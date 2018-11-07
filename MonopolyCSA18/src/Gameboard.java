@@ -31,7 +31,7 @@ public class Gameboard {
 								Integer.parseInt(temp[5]), //level 2 rent
 								Integer.parseInt(temp[6]), //level 3 rent
 								Integer.parseInt(temp[7]), //level 4 rent
-								Integer.parseInt(temp[8])  //level 5 rent (hotel)
+								Integer.parseInt(temp[8])   //level 5 rent (hotel)
 						);
 			}
 			
