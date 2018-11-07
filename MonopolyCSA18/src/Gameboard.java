@@ -43,6 +43,6 @@ public class Gameboard {
 	}
 	
 	public Space[][] getBoard() {
-		return board;
+		return board.clone();
 	}
 }
