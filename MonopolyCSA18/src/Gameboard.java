@@ -87,7 +87,9 @@ public class Gameboard {
 	public Space[][] getBoard() {
 		return board.clone();
 	}
-	
+	public Space getSpace(int xPos,int yPos) {
+		return board[yPos][xPos];
+	}
 	public String toString() {
 		String fin = "";
 		
