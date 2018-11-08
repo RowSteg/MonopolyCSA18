@@ -45,4 +45,23 @@ public class Gameboard {
 	public Space[][] getBoard() {
 		return board.clone();
 	}
+	
+	public Space getSpace(int x, int y) {
+		return board[y][x];
+	}
+	
+//	public static void main(String[]args) {
+//		Gameboard board = new Gameboard("RawSpacesList.txt");
+//		for(Space[] arr : board.getBoard()) {
+//			for(Space elem : arr) {
+//				try {
+//				System.out.print(((Property) elem).getName() + "   ");
+//				}
+//				catch(NullPointerException e) {
+//					System.out.print("Not Property   ");
+//				}
+//			}
+//			System.out.println("\n");
+//		}
+//	}
 }
