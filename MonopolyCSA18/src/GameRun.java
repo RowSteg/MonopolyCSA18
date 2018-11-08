@@ -5,7 +5,7 @@ public class GameRun {
 		// TODO Auto-generated method stub
 		Gameboard yeet = new Gameboard("RawSpacesList.txt");
 		
-		System.out.println(yeet.toString());
+		System.out.println(yeet.toString()); 
 	}
 
 }

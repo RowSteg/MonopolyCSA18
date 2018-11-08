@@ -5,7 +5,7 @@ public class Utility extends Space{
 	
 	//calculating rent may be annoying and I don't think it should be done in this class
 	//will probably be calculated in player class
-	
+	 
 	public Utility(String name, int xPos, int yPos, int price) {
 		super(name, xPos, yPos);
 		this.price = 150;

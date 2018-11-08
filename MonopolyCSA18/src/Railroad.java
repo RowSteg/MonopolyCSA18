@@ -5,6 +5,6 @@ public class Railroad extends Property{
 	
 	public Railroad(String name, int xPos, int yPos, String color, int price, int housePrice, int... rents) {
 		super(name, xPos, yPos, "Gray", price, -1, rents);
-	}
+	} 
 
 }

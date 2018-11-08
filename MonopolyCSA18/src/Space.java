@@ -8,7 +8,7 @@ public class Space {
 		this.name = name;
 		this.xPos = xPos;
 		this.yPos = yPos;
-	}
+	} 
 	
 	public String getName() {
 		return this.name;
