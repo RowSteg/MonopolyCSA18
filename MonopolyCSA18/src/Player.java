@@ -76,7 +76,7 @@ import java.util.ArrayList;
 		
 		Space temp = board.getSpace(xPos, yPos);
 		
-		if(temp instanceof Space) { //go, jail/visiting, free parking, go to jail
+		if(temp instanceof Space) { //go, jail/visiting,  free parking, go to jail
 			
 			switch(temp.getName()) {
 				case "go":
