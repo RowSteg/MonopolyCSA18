@@ -79,6 +79,10 @@ public class Gameboard {
 		
 	}
 	
+	public Space getSpace(int spaceNum) {
+		return board.get(spaceNum);
+	}
+	
 	public ArrayList<Space> getBoard() {
 		return (ArrayList<Space>) board.clone();
 	}
@@ -88,42 +92,7 @@ public class Gameboard {
 		
 		for(int i = 0; i<board.size(); i++) {
 			fin+=board.get(i).getName() + "\n";
-		}
-		
-		/*while(row>=1) {
-			fin+=board[row][col].getName() + "\n";
-
-			row--;
-		}
-		
-		row = 0;
-		col = 1;
-		
-		
-		while(col<=9) {
-			fin+=board[row][col].getName() + "\n";
-			
-			col++;
-		}
-		
-		row = 1;
-		col = 10;
-		
-		while(row<=9) {
-			fin+=board[row][col].getName() + "\n";
-			
-			row++;
-		}
-		
-		row = 10;
-		col = 9;
-		
-		while(col>=1) {
-			fin+=board[row][col].getName() + "\n";
-			
-			col--;
-		}*/
-		
+		}		
 		
 		return fin;
 	}
