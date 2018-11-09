@@ -69,11 +69,11 @@ public class Gameboard {
 									Integer.parseInt(temp[2]), //yPos
 									temp[1] //chance or chest
 							));
-				}else if(temp.length == 3) {
+				}else if(temp.length == 3) { //initializes corners
 					board.add(new Space(
-								temp[0],
-								Integer.parseInt(temp[2]),
-								Integer.parseInt(temp[1])
+								temp[0], //name
+								Integer.parseInt(temp[2]), //xPos
+								Integer.parseInt(temp[1])  //yPos
 							));
 				}
 
