@@ -79,6 +79,15 @@ public class Gameboard {
 		
 	}
 	
+	public Space getSpace(int x, int y) {
+		for(int i = 0; i < board.size(); i++) {
+			if(board.get(i).getXPos() == x && board.get(i).getYPos() == y) {
+				return board.get(i);
+			}
+		}
+		return null;
+	}
+	
 	public Space getSpace(int spaceNum) {
 		return board.get(spaceNum);
 	}
