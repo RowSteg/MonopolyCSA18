@@ -18,7 +18,7 @@ public class Gameboard {
 			
 			for(int i = 0; i<properties.size(); i++) { //Instantiates all properties into board
 				String[] temp = properties.get(i);
-				if(temp.length == 12 && !temp[9].equals("GRAY")) {
+				if(temp.length == 12 && !temp[9].equals("GRAY")) { //initializes all property types
 					board[Integer.parseInt(temp[10])][Integer.parseInt(temp[11])]
 							= new Property(
 									temp[0], //name of property
@@ -34,7 +34,7 @@ public class Gameboard {
 									Integer.parseInt(temp[7]), //level 4 rent
 									Integer.parseInt(temp[8])   //level 5 rent (hotel)
 							);	
-				}else if(temp.length == 12 && temp[9].equals("GRAY")) {
+				}else if(temp.length == 12 && temp[9].equals("GRAY")) { //initializes all railroad types
 					board[Integer.parseInt(temp[10])][Integer.parseInt(temp[11])]
 							= new Railroad(
 									temp[0], //name of property
@@ -50,7 +50,7 @@ public class Gameboard {
 									Integer.parseInt(temp[7]), //level 4 rent
 									Integer.parseInt(temp[8])   //level 5 rent (hotel)
 							);	
-				}else if(temp.length == 5 && temp[4].equals("UTIL")) {
+				}else if(temp.length == 5 && temp[4].equals("UTIL")) { //initializes all utility types
 					board[Integer.parseInt(temp[2])][Integer.parseInt(temp[3])]
 							= new Utility(
 									temp[0], //name of property
@@ -58,7 +58,7 @@ public class Gameboard {
 									Integer.parseInt(temp[2]), //yPos
 									Integer.parseInt(temp[1]) //price
 							);
-				}else if(temp.length == 5 && temp[4].equals("TAX")) {
+				}else if(temp.length == 5 && temp[4].equals("TAX")) { //initializes all tax types
 					board[Integer.parseInt(temp[2])][Integer.parseInt(temp[3])]
 							= new Tax(
 									temp[0], //name of property
@@ -66,7 +66,7 @@ public class Gameboard {
 									Integer.parseInt(temp[2]), //yPos
 									Integer.parseInt(temp[1]) //price
 							);
-				}else if(temp.length == 5 && temp[4].equals("CC")) {
+				}else if(temp.length == 5 && temp[4].equals("CC")) { //initializes community chest and chance types
 					board[Integer.parseInt(temp[2])][Integer.parseInt(temp[3])]
 							= new ChanceChest(
 									temp[0], //name of property
