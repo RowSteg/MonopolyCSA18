@@ -1,0 +1,17 @@
+Advance to "Go". (Collect $200),MOVEMENT
+Bank error in your favor. Collect $200.,MONEY,ADD,200
+Doctor's fees. Pay $50.,MONEY,SUBTRACT,50
+From sale of stock you get $50.,MONEY,ADD,50
+Get Out of Jail Free (keep this card),KEEP
+Go to Jail. Go directly to jail. Do not pass Go, Do not collect $200.,JAIL
+Grand Opera Night. Collect $50 from every player for opening night seats.,MONEY,ADD,50,PLAYER
+Holiday Fund matures. Receive $100.,MONEY,ADD,100
+Income tax refund. Collect $20.,MONEY,ADD,20
+It is your birthday. Collect $10 from every player.,MONEY,ADD,10,PLAYER
+Life insurance matures. Collect $100.,MONEY,ADD,100
+Hospital Fees. Pay $50.,MONEY,SUBTRACT,50
+School fees. Pay $50.,MONEY,SUBTRACT,50
+Receive $25 consultancy fee.,MONEY,ADD,25
+You are assessed for street repairs: Pay $40 for each level you own plus an extra $75 for every level 5.,MONEY,SUBTRACT,LEVELS,40,75
+You have won second prize in a beauty contest. Collect $10.,MONEY,ADD,10
+You inherit $100.,MONEY,ADD,100
