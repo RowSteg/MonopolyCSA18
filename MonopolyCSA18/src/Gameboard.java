@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Gameboard {
-	private Space[][] board;
+	private ArrayList<Space> board;
 	 
 	public Gameboard(String inFile){
-		board = new Space[11][11];
+		board = new ArrayList<Space>();
 		try {
 			ArrayList<String[]> properties = new ArrayList<String[]>();
 			Scanner in = new Scanner(new File(inFile));
@@ -19,8 +19,7 @@ public class Gameboard {
 			for(int i = 0; i<properties.size(); i++) { //Instantiates all properties into board
 				String[] temp = properties.get(i);
 				if(temp.length == 12 && !temp[9].equals("GRAY")) { //initializes all property types
-					board[Integer.parseInt(temp[10])][Integer.parseInt(temp[11])]
-							= new Property(
+					board.add(new Property(
 									temp[0], //name of property
 									Integer.parseInt(temp[11]), //xPos
 									Integer.parseInt(temp[10]), //yPos
@@ -33,10 +32,9 @@ public class Gameboard {
 									Integer.parseInt(temp[6]), //level 3 rent
 									Integer.parseInt(temp[7]), //level 4 rent
 									Integer.parseInt(temp[8])   //level 5 rent (hotel)
-							);	
+							));	
 				}else if(temp.length == 12 && temp[9].equals("GRAY")) { //initializes all railroad types
-					board[Integer.parseInt(temp[10])][Integer.parseInt(temp[11])]
-							= new Railroad(
+					board.add(new Railroad(
 									temp[0], //name of property
 									Integer.parseInt(temp[11]), //xPos
 									Integer.parseInt(temp[10]), //yPos
@@ -49,31 +47,28 @@ public class Gameboard {
 									Integer.parseInt(temp[6]), //level 3 rent
 									Integer.parseInt(temp[7]), //level 4 rent
 									Integer.parseInt(temp[8])   //level 5 rent (hotel)
-							);	
+							));	
 				}else if(temp.length == 5 && temp[4].equals("UTIL")) { //initializes all utility types
-					board[Integer.parseInt(temp[2])][Integer.parseInt(temp[3])]
-							= new Utility(
+					board.add(new Utility(
 									temp[0], //name of property
 									Integer.parseInt(temp[3]), //xPos
 									Integer.parseInt(temp[2]), //yPos
 									Integer.parseInt(temp[1]) //price
-							);
+							));
 				}else if(temp.length == 5 && temp[4].equals("TAX")) { //initializes all tax types
-					board[Integer.parseInt(temp[2])][Integer.parseInt(temp[3])]
-							= new Tax(
+					board.add(new Tax(
 									temp[0], //name of property
 									Integer.parseInt(temp[3]), //xPos
 									Integer.parseInt(temp[2]), //yPos
 									Integer.parseInt(temp[1]) //price
-							);
+							));
 				}else if(temp.length == 5 && temp[4].equals("CC")) { //initializes community chest and chance types
-					board[Integer.parseInt(temp[2])][Integer.parseInt(temp[3])]
-							= new ChanceChest(
+					board.add(new ChanceChest(
 									temp[0], //name of property
 									Integer.parseInt(temp[3]), //xPos
 									Integer.parseInt(temp[2]), //yPos
 									temp[1] //chance or chest
-							);
+							));
 				}
 			}
 			
@@ -84,17 +79,18 @@ public class Gameboard {
 		
 	}
 	
-	public Space[][] getBoard() {
-		return board.clone();
+	public ArrayList<Space> getBoard() {
+		return (ArrayList<Space>) board.clone();
 	}
 	
 	public String toString() {
 		String fin = "";
 		
-		int row = 9;
-		int col = 0;
+		for(int i = 0; i<board.size(); i++) {
+			fin+=board.get(i).getName() + "\n";
+		}
 		
-		while(row>=1) {
+		/*while(row>=1) {
 			fin+=board[row][col].getName() + "\n";
 
 			row--;
@@ -126,7 +122,7 @@ public class Gameboard {
 			fin+=board[row][col].getName() + "\n";
 			
 			col--;
-		}
+		}*/
 		
 		
 		return fin;
