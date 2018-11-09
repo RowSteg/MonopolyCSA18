@@ -1,4 +1,4 @@
-Advance to "Go". (Collect $200),MOVEMENT,FWD,0,0,NULL
+Advance to "Go". (Collect $200),MOVEMENT,FWD,0,0,GO
 Bank error in your favor. Collect $200.,MONEY,ADD,200,0,NULL
 Doctor's fees. Pay $50.,MONEY,SUBTRACT,50,0,NULL
 From sale of stock you get $50.,MONEY,ADD,50,0,NULL
