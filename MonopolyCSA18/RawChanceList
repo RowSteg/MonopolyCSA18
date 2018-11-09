@@ -7,10 +7,10 @@ Bank pays you dividend of $50.,MONEY,ADD,50
 Get Out of Jail Free (keep this card),KEEP
 Go Back Three Spaces,MOVEMENT
 Go to Jail. Go directly to jail. Do not pass Go, Do not collect $200.,JAIL
-Make general repairs on all your property: For each level you own, pay $25, plus an extra $75 for each level 5.,MONEY,SUBTRACT,LEVELS
+Make general repairs on all your property: For each level you own, pay $25, plus an extra $75 for each level 5.,MONEY,SUBTRACT,LEVELS,25,75
 Pay poor tax of $15.,MONEY,SUBTRACT,15
 Take a trip to Reading Railroad. If you pass Go, collect $200.,MOVEMENT
 Take a walk on the Boardwalk. Advance to Boardwalk.,MOVEMENT
-You have been elected Chairman of the Board. Pay each player $50.,MONEY,PLAYER,50
+You have been elected Chairman of the Board. Pay each player $50.,MONEY,SUBTRACT,50,PLAYER
 Your building loan matures. Receive $150.,MONEY,ADD,150
 You have won a crossword competition. Collect $100.,MONEY,ADD,100
