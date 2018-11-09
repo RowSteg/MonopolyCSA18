@@ -9,7 +9,7 @@ import java.util.ArrayList;
  	private int utilsOwned;
  	ArrayList<Space> owned;
  	
- 	boolean inJail;
+ 	private boolean inJail;
  	
  	public Player(String name) {
  		this.name = name;
@@ -70,6 +70,7 @@ import java.util.ArrayList;
  	public void gotojail() {
  		xPos = 10;
  		yPos = 10;
+ 		inJail = true;
  	}
 	
 	public void doSpace(Gameboard board) {
