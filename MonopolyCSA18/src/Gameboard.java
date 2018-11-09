@@ -69,7 +69,14 @@ public class Gameboard {
 									Integer.parseInt(temp[2]), //yPos
 									temp[1] //chance or chest
 							));
+				}else if(temp.length == 3) {
+					board.add(new Space(
+								temp[0],
+								Integer.parseInt(temp[2]),
+								Integer.parseInt(temp[1])
+							));
 				}
+
 			}
 			
 		} catch (FileNotFoundException e) {
