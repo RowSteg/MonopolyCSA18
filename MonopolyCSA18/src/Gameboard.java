@@ -73,10 +73,19 @@ public class Gameboard {
 			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch  block
 			e.printStackTrace(); 
 		}
 		
+	}
+	
+	public Space getSpace(int x, int y) {
+		for(int i = 0; i < board.size(); i++) {
+			if(board.get(i).getXPos() == x && board.get(i).getYPos() == y) {
+				return board.get(i);
+			}
+		}
+		return null;
 	}
 	
 	public Space getSpace(int spaceNum) {
