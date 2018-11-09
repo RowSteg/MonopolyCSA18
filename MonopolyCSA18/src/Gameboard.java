@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Gameboard {
 	private Space[][] board;
-	
+	 
 	public Gameboard(String inFile){
 		board = new Space[11][11];
 		try {
