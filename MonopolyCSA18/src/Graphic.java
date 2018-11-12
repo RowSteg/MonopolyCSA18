@@ -153,7 +153,7 @@ public class Graphic extends PApplet {
 		fill(0);
 		/*if(x==0&&s=='t'&&!play.inJail) {
 			ellipse(10,10,15,15);
-		}
+		} 
 		else {*/
 			if(s=='t')
 				ellipse(x*50+25,25,15,15);
