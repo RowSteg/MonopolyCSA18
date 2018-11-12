@@ -86,7 +86,7 @@ public class Graphic extends PApplet {
 		}
 		for (int i=1;i<=9;i++) {
 			Space spac = board.getSpace(0,i);
-			if (spac instanceof Property) {
+			if (spac instanceof Property) { 
 				Property prop = (Property)spac;
 				String color = prop.getColor();
 				int num = prop.getLevel();
