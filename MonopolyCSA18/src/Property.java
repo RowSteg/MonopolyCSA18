@@ -8,7 +8,7 @@ public class Property extends Space{
 	private int mortgage;
 	private int housePrice;
 	
-	private int level; // level 0 - 5 representing number of houses/ hotel.
+	private int level; // level 0 - 5 representing  number of houses/ hotel.
 	private HashMap<Integer, Integer> rents; // stores level as the key and rent price as the value
 	
 	private boolean owned;
