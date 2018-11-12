@@ -28,7 +28,7 @@ public class Graphic extends PApplet {
 		
 		//Gameboard board = new Gameboard("RawSpacesList.txt");
 		sides(board);
-		Player steve = new Player("steve");
+		Player steve = new Player("steve","yeet");
 		drawPlayer(0,'t',steve);
 		drawPlayer(1,'b',steve);
 		drawPlayer(1,'r',steve);
