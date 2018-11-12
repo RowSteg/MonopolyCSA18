@@ -1,6 +1,6 @@
 import processing.core.PApplet;
 public class Graphic extends PApplet {
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		
 		doGraphic();
 	}
@@ -151,10 +151,10 @@ public class Graphic extends PApplet {
 	}
 	public void drawPlayer(int x,char s,Player play) {	//takes in the position on the side as int, the side it's on as char, and the player object
 		fill(0);
-		if(x==0&&s=='t'&&!play.inJail) {
+		/*if(x==0&&s=='t'&&!play.inJail) {
 			ellipse(10,10,15,15);
 		}
-		else {
+		else {*/
 			if(s=='t')
 				ellipse(x*50+25,25,15,15);
 			if(s=='l')
@@ -163,7 +163,7 @@ public class Graphic extends PApplet {
 				ellipse(x*50+25,525,15,15);
 			if(s=='r')
 				ellipse(525,x*50+25,15,15);
-		}
+		//}
 	}
 	public static void doGraphic() {
 		PApplet.main("Graphic");
