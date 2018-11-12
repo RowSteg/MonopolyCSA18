@@ -20,7 +20,13 @@ public class CardStack {
 			}
 			for(int i = 0; i < cards.size(); i++) {
 				String[] temp = cards.get(i);
-				addCard(new Card(temp[0])); //TODO need to update one Card is fixed
+				addCard(new Card(temp[0],
+						temp[1],
+						temp[2],
+						Integer.parseInt(temp[3]),
+						Integer.parseInt(temp[4]),
+						temp[5]
+						));
 			}
 			in.close();
 		} catch (FileNotFoundException e) {
