@@ -67,10 +67,14 @@ import java.util.ArrayList;
  		utilsOwned++;
 	}
  	
- 	public void gotojail() {
+ 	public void goToJail() {
  		xPos = 10;
  		yPos = 10;
  		inJail = true;
+ 	}
+ 	
+ 	public void getOutJail() {
+ 		inJail = false;
  	}
 	
 	public void doSpace(Gameboard board) {
@@ -90,6 +94,7 @@ import java.util.ArrayList;
  				case "go to jail":
 					xPos = 10;
 					yPos = 10;
+					inJail = true;
 					break;
 					
 				//free parking does nothing, so no case
