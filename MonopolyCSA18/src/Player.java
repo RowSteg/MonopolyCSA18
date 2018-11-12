@@ -48,7 +48,7 @@ import java.util.ArrayList;
 		return color;
 	}
 	//number of certain types
-	public int getRailroadsOwned() { 
+	public int getRailroadsOwned() {  
 		return railroadsOwned;
 	}	
 	public int getUtilsOwned() {
