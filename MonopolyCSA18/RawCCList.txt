@@ -1,17 +1,17 @@
-Advance to "Go". (Collect $200),MOVEMENT,FWD,0,0,GO
-Bank error in your favor. Collect $200.,MONEY,ADD,200,0,NULL
-Doctor's fees. Pay $50.,MONEY,SUBTRACT,50,0,NULL
-From sale of stock you get $50.,MONEY,ADD,50,0,NULL
-Get Out of Jail Free (keep this card),KEEP,NULL,0,0,NULL
-Go to Jail. Go directly to jail. Do not pass Go, Do not collect $200.,JAIL,NULL,0,0,NULL
-Grand Opera Night. Collect $50 from every player for opening night seats.,MONEY,ADD,50,0,PLAYER
-Holiday Fund matures. Receive $100.,MONEY,ADD,100,0,NULL
-Income tax refund. Collect $20.,MONEY,ADD,20,0,NULL
-It is your birthday. Collect $10 from every player.,MONEY,ADD,10,0,PLAYER
-Life insurance matures. Collect $100.,MONEY,ADD,100,0,NULL
-Hospital Fees. Pay $50.,MONEY,SUBTRACT,50,0,NULL
-School fees. Pay $50.,MONEY,SUBTRACT,50,0,NULL
-Receive $25 consultancy fee.,MONEY,ADD,25,0,NULL
-You are assessed for street repairs: Pay $40 for each level you own plus an extra $75 for every level 5.,MONEY,SUBTRACT,40,75,LEVELS
-You have won second prize in a beauty contest. Collect $10.,MONEY,ADD,10,0,NULL
-You inherit $100.,MONEY,ADD,100,0,NULL
+Advance to "Go". (Collect $200);MOVEMENT;FWD;0;0;GO
+Bank error in your favor. Collect $200.;MONEY;ADD;200;0;NULL
+Doctor's fees. Pay $50.;MONEY;SUBTRACT;50;0;NULL
+From sale of stock you get $50.;MONEY;ADD;50;0;NULL
+Get Out of Jail Free (keep this card);KEEP;NULL;0;0;NULL
+Go to Jail. Go directly to jail. Do not pass Go, Do not collect $200.;JAIL;NULL;0;0;NULL
+Grand Opera Night. Collect $50 from every player for opening night seats.;MONEY;ADD;50;0;PLAYER
+Holiday Fund matures. Receive $100.;MONEY;ADD;100;0;NULL
+Income tax refund. Collect $20.;MONEY;ADD;20;0;NULL
+It is your birthday. Collect $10 from every player.;MONEY;ADD;10;0;PLAYER
+Life insurance matures. Collect $100.;MONEY;ADD;100;0;NULL
+Hospital Fees. Pay $50.;MONEY;SUBTRACT;50;0;NULL
+School fees. Pay $50.;MONEY;SUBTRACT;50;0;NULL
+Receive $25 consultancy fee.;MONEY;ADD;25;0;NULL
+You are assessed for street repairs: Pay $40 for each level you own plus an extra $75 for every level 5.;MONEY;SUBTRACT;40;75;LEVELS
+You have won second prize in a beauty contest. Collect $10.;MONEY;ADD;10;0;NULL
+You inherit $100.;MONEY;ADD;100;0;NULL
