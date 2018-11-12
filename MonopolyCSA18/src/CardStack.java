@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class CardStack { 
+public class CardStack {
 	private Deque<Card> cardStack;
 	private final Deque<Card> cardStackCopy; //reset deck to use once the deck is empty
 	public CardStack(String inFile) { //instantiates the deck and all cards
