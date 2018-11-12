@@ -145,7 +145,7 @@ public class Graphic extends PApplet {
 		if(s=='l')
 			rect(41,x*50+15,8,20);
 		if(s=='b')
-			rect(x*50+15,501,20,8);
+			rect(x*50+15,501,20,8); 
 		if(s=='r')
 			rect(501,x*50+15,8,20);
 	}
