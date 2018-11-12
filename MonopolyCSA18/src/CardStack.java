@@ -1,4 +1,3 @@
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
@@ -16,7 +15,7 @@ public class CardStack {
 		try {
 			Scanner in = new Scanner(new File(inFile));
 			while(in.hasNextLine()) {
-				cards.add(in.nextLine().split(","));
+				cards.add(in.nextLine().split(";"));
 			}
 			for(int i = 0; i < cards.size(); i++) {
 				String[] temp = cards.get(i);
@@ -30,7 +29,7 @@ public class CardStack {
 			}
 			in.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block 
 			e.printStackTrace();
 		}
 		cardStackCopy = cardStack;
