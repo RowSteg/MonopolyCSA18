@@ -1,5 +1,5 @@
 public class Card {
-	private final String event; 
+	private final String event;
 	private final String effect;
 	private final String direction;
 	private final int amount;
