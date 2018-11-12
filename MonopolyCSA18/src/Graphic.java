@@ -1,13 +1,13 @@
-import processing.core.PApplet;
+import processing.core.*;
 public class Graphic extends PApplet {
-	private Gameboard board;
-	/*public static void main(String[] args) { 
-		
-		doGraphic();
-	}*/
+	private static Gameboard board;
+	public static void main(String[] args) { 
+		PApplet.main("Graphic");
+		//doGraphic();
+	}
 	
-	public Graphic(Gameboard board) {
-		this.board = board;
+	public static void setBoard(Gameboard boardT) {
+		board = boardT;
 	}
 
 	
@@ -28,7 +28,7 @@ public class Graphic extends PApplet {
 		
 		//Gameboard board = new Gameboard("RawSpacesList.txt");
 		sides(board);
-		Player steve = new Player("steve");
+		Player steve = new Player("steve","yeet");
 		drawPlayer(0,'t',steve);
 		drawPlayer(1,'b',steve);
 		drawPlayer(1,'r',steve);
@@ -172,8 +172,5 @@ public class Graphic extends PApplet {
 			if(s=='r')
 				ellipse(525,x*50+25,15,15);
 		//}
-	}
-	public static void doGraphic() {
-		PApplet.main("Graphic");
 	}
 }
