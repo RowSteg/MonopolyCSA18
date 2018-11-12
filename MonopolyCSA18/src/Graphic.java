@@ -1,8 +1,13 @@
 import processing.core.PApplet;
 public class Graphic extends PApplet {
-	public static void main(String[] args) { 
+	private Gameboard board;
+	/*public static void main(String[] args) { 
 		
 		doGraphic();
+	}*/
+	
+	public Graphic(Gameboard board) {
+		this.board = board;
 	}
 
 	
@@ -20,13 +25,16 @@ public class Graphic extends PApplet {
 			rect(500,i,50,50);
 			rect(i,500,50,50);
 		}
-		Gameboard board = new Gameboard("RawSpacesList.txt");
+		
+		//Gameboard board = new Gameboard("RawSpacesList.txt");
 		sides(board);
 		Player steve = new Player("steve");
 		drawPlayer(0,'t',steve);
 		drawPlayer(1,'b',steve);
 		drawPlayer(1,'r',steve);
 		drawPlayer(1,'l',steve);
+		
+		rect(550,0,275,75);
 	}
 	public void drawProp(int i,char d,String c) {
 		switch (c) {									//set the color to the property's color
