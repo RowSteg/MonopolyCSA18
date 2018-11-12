@@ -1,6 +1,7 @@
 import java.util.ArrayList;
  public class Player {
  	private String name;
+ 	private String color;
  	private int xPos;
  	private int yPos;
  	private int amountOfMoney;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
  	
  	private boolean inJail;
  	
- 	public Player(String name) {
+ 	public Player(String name, String color) {
  		this.name = name;
- 		xPos = 10;
+ 		this.color = color;
+ 		xPos = 0;
  		yPos = 10;
  		amountOfMoney = 1500;
  	}
@@ -42,62 +44,57 @@ import java.util.ArrayList;
 		return name;
 	}
 	
+	//number of certain types
 	public int getRailroadsOwned() {
 		return railroadsOwned;
-	}
-		
+	}	
 	public int getUtilsOwned() {
 		return utilsOwned;
 	}
 	
+	//buy stuff
 	private void buyProperty(Property p) {
 		p.setOwner(this);
 		owned.add(p);
  	}
- 	
  	private void buyRailroad(Railroad r) {
  		r.setOwner(this);
  		owned.add(r);
  		railroadsOwned++;
  	}
- 	
  	private void buyUtility(Utility u) {
  		u.setOwner(this);
  		owned.add(u);
  		utilsOwned++;
 	}
  	
+ 	//jail
  	public void goToJail() {
  		xPos = 10;
  		yPos = 10;
  		inJail = true;
  	}
- 	
  	public void getOutJail() {
  		inJail = false;
  	}
 	
+ 	public ArrayList<Space> getOwned(){
+ 		return owned;
+ 	}
+ 	
 	public void doSpace(Gameboard board) {
 		
 		Space temp = board.getSpace(xPos, yPos);
 		
-		if(temp instanceof Space) { //go, jail/visiting,  free parking, go to jail
+		if(temp instanceof Railroad) { //Railroads. Different from above if because needs check for multiple railroads
 			
-			switch(temp.getName()) {
-				case "go":
-					amountOfMoney += 200;
-					break;
-					
-				case "jail": 
-					//use get out of jail free card, buying card from other player(complicated?), paying 50
-					break;
- 				case "go to jail":
-					xPos = 10;
-					yPos = 10;
-					inJail = true;
-					break;
-					
-				//free parking does nothing, so no case
+			Railroad current  = (Railroad) temp;
+			if(current.isOwned()) {
+				amountOfMoney -= 25 * Math.pow(2, current.getOwner().getRailroadsOwned()-1);
+			}
+			else {
+				this.buyRailroad(current);
+				//player must either buy or auction the property
 			}
 		}
 		
@@ -115,18 +112,6 @@ import java.util.ArrayList;
 			}
 		}
 		
-		else if(temp instanceof Railroad) { //Railroads. Different from above if because needs check for multiple railroads
-			
-			Railroad current  = (Railroad) temp;
-			if(current.isOwned()) {
-				amountOfMoney -= 25 * Math.pow(2, current.getOwner().getRailroadsOwned()-1);
-			}
-			else {
-				this.buyRailroad(current);
-				//player must either buy or auction the property
-			}
-		}
-		
 		else if(temp instanceof Utility) { //Utilities. Different from above ifs because needs dice check and check for multiple ownership
 			
 			Utility current = (Utility) temp;
@@ -136,6 +121,26 @@ import java.util.ArrayList;
 			else {
 				this.buyUtility(current);
 				//player must either buy or auction the property
+			}
+		}
+		
+		else{ //go, jail/visiting,  free parking, go to jail
+			
+			switch(temp.getName()) {
+				case "go":
+					amountOfMoney += 200;
+					break;
+					
+				case "jail": 
+					//use get out of jail free card, buying card from other player(complicated?), paying 50
+					break;
+ 				case "go to jail":
+					xPos = 10;
+					yPos = 10;
+					inJail = true;
+					break;
+					
+				//free parking does nothing, so no case
 			}
 		}
 	}
