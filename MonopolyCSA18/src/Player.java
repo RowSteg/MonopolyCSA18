@@ -88,7 +88,7 @@ import java.util.ArrayList;
 					amountOfMoney += 200;
 					break;
 					
-				case "jail":
+				case "jail": 
 					//use get out of jail free card, buying card from other player(complicated?), paying 50
 					break;
  				case "go to jail":
