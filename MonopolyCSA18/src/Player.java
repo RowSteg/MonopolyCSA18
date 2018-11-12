@@ -9,7 +9,7 @@ import java.util.ArrayList;
  	private int utilsOwned;
  	ArrayList<Space> owned;
  	
- 	boolean inJail;
+ 	private boolean inJail;
  	
  	public Player(String name) {
  		this.name = name;
@@ -67,9 +67,14 @@ import java.util.ArrayList;
  		utilsOwned++;
 	}
  	
- 	public void gotojail() {
+ 	public void goToJail() {
  		xPos = 10;
  		yPos = 10;
+ 		inJail = true;
+ 	}
+ 	
+ 	public void getOutJail() {
+ 		inJail = false;
  	}
 	
 	public void doSpace(Gameboard board) {
@@ -83,12 +88,13 @@ import java.util.ArrayList;
 					amountOfMoney += 200;
 					break;
 					
-				case "jail":
+				case "jail": 
 					//use get out of jail free card, buying card from other player(complicated?), paying 50
 					break;
  				case "go to jail":
 					xPos = 10;
 					yPos = 10;
+					inJail = true;
 					break;
 					
 				//free parking does nothing, so no case
