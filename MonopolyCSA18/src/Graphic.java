@@ -2,13 +2,12 @@ import processing.core.PApplet;
 public class Graphic extends PApplet {
 	public static void main(String[] args) {
 		
-		Gameboard board = new Gameboard("RawSpacesList.txt");
-		PApplet.main("Graphic");
+		doGraphic();
 	}
 
 	
 	public void settings() {
-		size(550,550);
+		size(550,700);
 	}
 	public void setup() {
 		
@@ -23,6 +22,11 @@ public class Graphic extends PApplet {
 		}
 		Gameboard board = new Gameboard("RawSpacesList.txt");
 		sides(board);
+		Player steve = new Player("steve");
+		drawPlayer(0,'t',steve);
+		drawPlayer(1,'b',steve);
+		drawPlayer(1,'r',steve);
+		drawPlayer(1,'l',steve);
 	}
 	public void drawProp(int i,char d,String c) {
 		switch (c) {									//set the color to the property's color
@@ -50,6 +54,9 @@ public class Graphic extends PApplet {
 			case "DK BLUE":
 				fill(0,0,255);
 				break;
+			case "GRAY":
+				fill(100);
+				break;
 			default:
 				fill(0);
 		}
@@ -63,21 +70,7 @@ public class Graphic extends PApplet {
 		if(d=='l')
 			rect(40,i*50,10,50);
 	}
-	public char checkSide(int xPos,int yPos) {
-		if (xPos==0) {
-			return 'b';
-		}
-		if (xPos==10) {
-			return 't';
-		}
-		if (yPos==0) {
-			return 'l';
-		}
-		else {
-			return 'r';
-		}
-		
-	}
+	
 	public void sides(Gameboard board) {
 		
 		for (int i=1;i<=9;i++) {
@@ -85,7 +78,9 @@ public class Graphic extends PApplet {
 			if (spac instanceof Property) {
 				Property prop = (Property)spac;
 				String color = prop.getColor();
+				int num = prop.getLevel();
 				drawProp(i,'t',color);
+				drawHouse(i,'t',num);
 			}
 			
 		}
@@ -94,7 +89,9 @@ public class Graphic extends PApplet {
 			if (spac instanceof Property) {
 				Property prop = (Property)spac;
 				String color = prop.getColor();
+				int num = prop.getLevel();
 				drawProp(i,'l',color);
+				drawHouse(i,'t',num);
 			}
 			
 		}
@@ -103,7 +100,9 @@ public class Graphic extends PApplet {
 			if (spac instanceof Property) {
 				Property prop = (Property)spac;
 				String color = prop.getColor();
+				int num = prop.getLevel();
 				drawProp(i,'b',color);
+				drawHouse(i,'t',num);
 			}
 			
 		}
@@ -112,9 +111,61 @@ public class Graphic extends PApplet {
 			if (spac instanceof Property) {
 				Property prop = (Property)spac;
 				String color = prop.getColor();
+				int num = prop.getLevel();
 				drawProp(i,'r',color);
+				drawHouse(i,'t',num);
 			}
 			
 		}
+	}
+	public void drawHouse(int x,char s, int n) { //takes in the position on the side as an int, the side as a char, and the number of house it is(ex: 2nd house on that property)
+		fill(28, 219, 47);	//sets to green color
+		if(n!=0) {
+			if(n>=5) {	//if it's greater than 4 houses it'll just make 1 hotel
+				drawHotel(x,s);
+			}
+			else {
+				for(int i=0;i<n;i++) {	//makes as many houses as it needs
+					if(s=='t')
+						rect(x*50+6+(i*10),41,8,8);
+					if(s=='l')
+						rect(41,x*50+6+(i*10),8,8);
+					if(s=='b')
+						rect(x*50+6+(i*10),501,8,8);
+					if(s=='r')
+						rect(501,x*50+6+(i*10),8,8);
+				}
+			}
+		}
+	}
+	public void drawHotel(int x,char s) {	//takes in the position on the side as int, the side it's on as char
+		fill(221, 5, 5);	//sets to red color
+		if(s=='t')
+			rect(x*50+15,41,20,8);
+		if(s=='l')
+			rect(41,x*50+15,8,20);
+		if(s=='b')
+			rect(x*50+15,501,20,8);
+		if(s=='r')
+			rect(501,x*50+15,8,20);
+	}
+	public void drawPlayer(int x,char s,Player play) {	//takes in the position on the side as int, the side it's on as char, and the player object
+		fill(0);
+		if(x==0&&s=='t'&&!play.inJail) {
+			ellipse(10,10,15,15);
+		}
+		else {
+			if(s=='t')
+				ellipse(x*50+25,25,15,15);
+			if(s=='l')
+				ellipse(25,x*50+25,15,15);
+			if(s=='b')
+				ellipse(x*50+25,525,15,15);
+			if(s=='r')
+				ellipse(525,x*50+25,15,15);
+		}
+	}
+	public static void doGraphic() {
+		PApplet.main("Graphic");
 	}
 }

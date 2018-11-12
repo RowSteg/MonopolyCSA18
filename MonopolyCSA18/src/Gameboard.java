@@ -83,7 +83,9 @@ public class Gameboard {
 		}
 		
 	}
-	
+	public Space getSpace(int xPos,int yPos) {
+		return board[yPos][xPos];
+	}
 	public Space[][] getBoard() {
 		return board.clone();
 	}
