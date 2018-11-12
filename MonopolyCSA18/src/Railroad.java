@@ -4,7 +4,7 @@ public class Railroad extends Property{
 	//implemented in player
 	
 	public Railroad(String name, int xPos, int yPos, String color, int price, int housePrice, int... rents) {
-		super(name, xPos, yPos, "Gray", price, -1, rents);
+		super(name, xPos, yPos, "GRAY", price, -1, rents);
  	} 
  
  }
