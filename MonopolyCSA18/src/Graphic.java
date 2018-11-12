@@ -14,7 +14,7 @@ public class Graphic extends PApplet {
 	public void settings() {
 		size(550,700);
 	}
-	public void setup() {
+	public void setup() { 
 		
 	}
 	public void draw() {

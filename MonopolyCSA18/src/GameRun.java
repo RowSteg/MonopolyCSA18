@@ -6,6 +6,14 @@ public class GameRun {
 		Gameboard yeet = new Gameboard("RawSpacesList.txt");
 		
 		System.out.println(yeet.toString()); 
+		
+		CardStack chanceCards = new CardStack("RawChanceList.txt");
+		CardStack communityChestCards = new CardStack("RawCCList.txt");
+		chanceCards.shuffleCards();
+		communityChestCards.shuffleCards();
+		
+		System.out.println(chanceCards.toString());
+		System.out.println(communityChestCards.toString());
 	}
 
 }
