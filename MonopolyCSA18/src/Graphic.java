@@ -1,15 +1,9 @@
-import processing.core.PApplet;
+import processing.core.*;
 public class Graphic extends PApplet {
 	private Gameboard board;
-	/*public static void main(String[] args) { 
-		
-		doGraphic();
-	}*/
-	
-	public Graphic(Gameboard board) {
-		this.board = board;
+	public static void main(String[] args) { 
+		PApplet.main("Graphic");
 	}
-
 	
 	public void settings() {
 		size(550,700);
@@ -26,10 +20,11 @@ public class Graphic extends PApplet {
 			rect(i,500,50,50);
 		}
 		
-		//Gameboard board = new Gameboard("RawSpacesList.txt");
+		Gameboard board = new Gameboard("RawSpacesList.txt");
 		sides(board);
-		Player steve = new Player("steve");
-		drawPlayer(0,'t',steve);
+		Player steve = new Player("YELLOW","orange");
+		Player bob = new Player("RED","blue");
+		drawPlayer(0,'t',bob);
 		drawPlayer(1,'b',steve);
 		drawPlayer(1,'r',steve);
 		drawPlayer(1,'l',steve);
@@ -158,7 +153,38 @@ public class Graphic extends PApplet {
 			rect(501,x*50+15,8,20);
 	}
 	public void drawPlayer(int x,char s,Player play) {	//takes in the position on the side as int, the side it's on as char, and the player object
-		fill(0);
+		
+		switch (play.getColor()) {									//set the color to the property's color
+		case "BROWN":
+			fill(139,69,19);
+			break;
+		case "LT BLUE":
+			fill(176,224,230);
+			break;
+		case "PURPLE":
+			fill(255,20,147);
+			break;
+		case "ORANGE":
+			fill(255,140,0);
+			break;
+		case "RED":
+			fill(255,0,0);
+			break;
+		case "YELLOW":
+			fill(255,255,0);
+			break;
+		case "GREEN":
+			fill(0,128,0);
+			break;
+		case "DK BLUE":
+			fill(0,0,255);
+			break;
+		case "GRAY":
+			fill(100);
+			break;
+		default:
+			fill(0);
+	}
 		/*if(x==0&&s=='t'&&!play.inJail) {
 			ellipse(10,10,15,15);
 		} 
@@ -172,8 +198,5 @@ public class Graphic extends PApplet {
 			if(s=='r')
 				ellipse(525,x*50+25,15,15);
 		//}
-	}
-	public static void doGraphic() {
-		PApplet.main("Graphic");
 	}
 }
