@@ -1,8 +1,14 @@
 import processing.core.*;
 public class Graphic extends PApplet {
-	private Gameboard board;
+
+	private static Gameboard board;
 	public static void main(String[] args) { 
 		PApplet.main("Graphic");
+		//doGraphic();
+	}
+	
+	public static void setBoard(Gameboard boardT) {
+		board = boardT;
 	}
 	
 	public void settings() {
@@ -25,6 +31,7 @@ public class Graphic extends PApplet {
 		Player steve = new Player("YELLOW","orange");
 		Player bob = new Player("RED","blue");
 		drawPlayer(0,'t',bob);
+		drawPlayer(0,'t',steve);
 		drawPlayer(1,'b',steve);
 		drawPlayer(1,'r',steve);
 		drawPlayer(1,'l',steve);
