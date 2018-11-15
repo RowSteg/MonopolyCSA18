@@ -11,6 +11,7 @@ import java.util.ArrayList;
  	ArrayList<Space> owned;
  	
  	private boolean inJail;
+ 	private int jailCards;
  	
  	public Player(String name, String color) {
  		this.name = name;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
  		xPos = 0;
  		yPos = 10;
  		amountOfMoney = 1500;
+ 		jailCards = 0;
  	}
  	
  	public String getColor() {
@@ -34,6 +36,11 @@ import java.util.ArrayList;
 	
 	public int getYPos() {
 		return yPos;
+	}
+	
+	public void setPosition(int x, int y) {
+		xPos = x;
+		yPos = y;
 	}
 	
 	public int getAmountOfMoney() {
@@ -88,6 +95,24 @@ import java.util.ArrayList;
 	
  	public ArrayList<Space> getOwned(){
  		return owned;
+ 	}
+ 	
+ 	public int getJailCards() {
+ 		return jailCards;
+ 	}
+ 	
+ 	public void addJailCard() {
+ 		jailCards++;
+ 	}
+ 	
+ 	public void removeJailCard() {
+ 		if(jailCards > 0) {
+ 			jailCards--;
+ 		}
+ 	}
+ 	
+ 	public void setJailCards(int n) {
+ 		jailCards = n;
  	}
  	
 	public void doSpace(Gameboard board) {
