@@ -99,6 +99,15 @@ public class Gameboard {
 		return board.get(spaceNum);
 	}
 	
+	public int getPosition(Space space) {
+		for(int i = 0; i < board.size(); i++) {
+			if(space.getName().equals(board.get(i).getName())) {
+				return i;
+			}
+		}
+		return 0;
+	}
+	
 	public ArrayList<Space> getBoard() {
 		return (ArrayList<Space>) board.clone();
 	}
