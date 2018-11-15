@@ -84,7 +84,7 @@ public class Gameboard {
 			e.printStackTrace(); 
 		}
 		
-	}
+	} 
 	
 	public Space getSpace(int x, int y) {
 		for(int i = 0; i < board.size(); i++) {
