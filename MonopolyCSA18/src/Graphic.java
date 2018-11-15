@@ -5,8 +5,12 @@ public class Graphic extends PApplet {
 
 	private static Gameboard board;
 	private static int playNum;
+	private Player[] play = new Player[playNum];
+	private char side = 'l';
+	private static int spae = 10;
 	
 	public static void main(String[] args) { 
+		
 		PApplet.main("Graphic");
 		//doGraphic();
 	}
@@ -19,8 +23,18 @@ public class Graphic extends PApplet {
 		size(550,700);
 	}
 	public void setup() { 
-		
+		for(int i=0; i<playNum; i++) { //Creates Players
+			Scanner in = new Scanner(System.in);
+			System.out.println("Name:");
+			String nam = in.nextLine();
+			Scanner in2 = new Scanner(System.in);
+			System.out.println("Color:");
+			String col = in2.nextLine();
+			
+			play[i] = new Player(nam,col);
+		}
 	}
+	
 	public void draw() {
 		fill(255);
 		for(int i=0;i<550;i+=50) {
@@ -32,20 +46,30 @@ public class Graphic extends PApplet {
 		
 		Gameboard board = new Gameboard("RawSpacesList.txt");
 		sides(board);
-		for(int i=0; i<playNum; i++) {
-			Scanner in = new Scanner(System.in);
-			String nam = in.next();
-			String col = in.next();
-			
-			Player play = new Player(nam,col);
+		
+		for(int i = 0; i<playNum; i++) {
+			drawPlayer(spae,side,play[i]);
 		}
-		/*drawPlayer(1,'t',bob);
-		drawPlayer(0,'t',steve);
-		drawPlayer(1,'b',steve);
-		drawPlayer(1,'r',steve);
-		drawPlayer(1,'l',steve);*/
+		
+		//Switching sides for movement
+		if(spae == 0 && side == 'l') {
+			side = 't';
+			spae = 0;
+		}
+		if(spae == 10 && side == 't') {
+			side = 'r';
+			spae = 0;
+		}
+		if(spae == 10 && side == 'r') {
+			side = 'b';
+			spae = 0;
+		}
 		
 		rect(550,0,275,75);
+	}
+	
+	public static void setSpae(int x) {
+		spae = x;
 	}
 	
 	public static void setPlayNum(int x) {
@@ -175,7 +199,7 @@ public class Graphic extends PApplet {
 	}
 	public void drawPlayer(int x,char s,Player play) {	//takes in the position on the side as int, the side it's on as char, and the player object
 		
-		switch (play.getColor()) {									//set the color to the property's color
+	switch (play.getColor()) {									//set the color to the property's color
 		case "BROWN":
 			fill(139,69,19);
 			break;
@@ -219,5 +243,9 @@ public class Graphic extends PApplet {
 			if(s=='r')
 				ellipse(525,x*50+25,15,15);
 		//}
+	}
+
+	public static int getSpae() {
+		return spae;
 	}
 }
