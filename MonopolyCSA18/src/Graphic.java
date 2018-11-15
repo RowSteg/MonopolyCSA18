@@ -1,7 +1,11 @@
+import java.util.Scanner;
+
 import processing.core.*;
 public class Graphic extends PApplet {
 
 	private static Gameboard board;
+	private static int playNum;
+	
 	public static void main(String[] args) { 
 		PApplet.main("Graphic");
 		//doGraphic();
@@ -28,16 +32,26 @@ public class Graphic extends PApplet {
 		
 		Gameboard board = new Gameboard("RawSpacesList.txt");
 		sides(board);
-		Player steve = new Player("YELLOW","orange");
-		Player bob = new Player("RED","blue");
-		drawPlayer(0,'t',bob);
+		for(int i=0; i<playNum; i++) {
+			Scanner in = new Scanner(System.in);
+			String nam = in.next();
+			String col = in.next();
+			
+			Player play = new Player(nam,col);
+		}
+		/*drawPlayer(1,'t',bob);
 		drawPlayer(0,'t',steve);
 		drawPlayer(1,'b',steve);
 		drawPlayer(1,'r',steve);
-		drawPlayer(1,'l',steve);
+		drawPlayer(1,'l',steve);*/
 		
 		rect(550,0,275,75);
 	}
+	
+	public static void setPlayNum(int x) {
+		playNum = x;
+	}
+	
 	public void drawProp(int i,char d,String c) {
 		switch (c) {									//set the color to the property's color
 			case "BROWN":

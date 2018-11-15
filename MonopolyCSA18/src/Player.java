@@ -20,6 +20,10 @@ import java.util.ArrayList;
  		amountOfMoney = 1500;
  	}
  	
+ 	public String getColor() {
+ 		return this.color;
+ 	}
+ 	
 	public int[] getPos() {
 		return new int[] {xPos, yPos};
 	}
