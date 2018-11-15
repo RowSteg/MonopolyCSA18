@@ -66,7 +66,7 @@ import java.util.ArrayList;
 	public void playMove(int x) {
 		Graphic.setSpae(Graphic.getSpae()+x);
 	}
-	
+	 
 	//buy stuff
 	private void buyProperty(Property p) {
 		p.setOwner(this);

@@ -13,7 +13,7 @@ public class Graphic extends PApplet {
 		
 		PApplet.main("Graphic");
 		//doGraphic();
-	}
+	} 
 	
 	public static void setBoard(Gameboard boardT) {
 		board = boardT;
