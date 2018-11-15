@@ -8,7 +8,7 @@ public class GameRun {
 		
 		Scanner in = new Scanner(System.in);
 		System.out.println("How Many Players?");
-		int x = in.nextInt();
+		int x = in.nextInt(); 
 		Graphic.setBoard(yeet);
 		Graphic.setPlayNum(x);
 		Graphic.main(args);
