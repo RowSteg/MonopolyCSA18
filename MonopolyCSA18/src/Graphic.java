@@ -72,7 +72,7 @@ public class Graphic extends PApplet {
 		line(0,625,550,625);
 		
 		textSize(40);
-		fill(0);
+		fill(0); 
 		text("Roll Dice",50,600);
 		
 		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && mousePressed) {
