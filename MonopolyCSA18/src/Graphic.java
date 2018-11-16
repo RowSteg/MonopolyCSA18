@@ -5,7 +5,7 @@ public class Graphic extends PApplet {
 
 	private static Gameboard board;
 	private static int playNum;
-	private Player[] play = new Player[playNum];
+	private static Player[] play;
 	private char side = 'l';
 	private static int spae = 10;
 	
@@ -23,6 +23,7 @@ public class Graphic extends PApplet {
 		size(550,700);
 	}
 	public void setup() { 
+		play = new Player[playNum];
 		for(int i=0; i<playNum; i++) { //Creates Players
 			Scanner in = new Scanner(System.in);
 			System.out.println("Name:");
@@ -66,6 +67,19 @@ public class Graphic extends PApplet {
 		}
 		
 		rect(550,0,275,75);
+		
+		line(275,550,275,700);
+		line(0,625,550,625);
+		
+		textSize(40);
+		fill(0);
+		text("Roll Dice",50,600);
+		
+		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && mousePressed) {
+			int[] option = Dice.rollDice();
+			
+			play[1].playMove(option[0]+option[1]);
+		}
 	}
 	
 	public static void setSpae(int x) {
@@ -74,6 +88,10 @@ public class Graphic extends PApplet {
 	
 	public static void setPlayNum(int x) {
 		playNum = x;
+	}
+	
+	public static Player[] getPlayers() {
+		return play;
 	}
 	
 	public void drawProp(int i,char d,String c) {
