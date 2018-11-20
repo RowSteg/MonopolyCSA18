@@ -74,8 +74,8 @@ public class Graphic extends PApplet {
 		textSize(40);
 		fill(0); 
 		text("Roll Dice",50,600);
-		if(board.getSpace(3) instanceof Property) {
-			drawDisplay((Property)board.getSpace(3));
+		if(board.getSpace(0) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
+			drawDisplay((Property)board.getSpace(0));
 		}
 		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && mousePressed) {
 			int[] option = Dice.rollDice();
@@ -189,8 +189,8 @@ public class Graphic extends PApplet {
 			rect(501,x*50+15,8,20);
 	}
 	public void drawPlayer(int x,char s,Player play) {	//takes in the position on the side as int, the side it's on as char, and the player object
-		int temp[] = convertColor(play.getColor());
-		fill(temp[0],temp[1],temp[2]);
+		int c[] = convertColor(play.getColor());
+		fill(c[0],c[1],c[2]);
 	
 		/*if(x==0&&s=='t'&&!play.inJail) {
 			ellipse(10,10,15,15);
@@ -238,8 +238,8 @@ public class Graphic extends PApplet {
 		else
 			text("Owned By: Nobody",200,305);
 	}
-	public int[] convertColor(String color){
-		switch (color) {									//set the color to the property's color
+	public int[] convertColor(String color){			//takes in name of color and gives an array of rgb values of that color. note: All caps pls
+		switch (color) {									
 		case "BROWN":
 			return new int[] {139,69,19};
 		case "LT BLUE":
