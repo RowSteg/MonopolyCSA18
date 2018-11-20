@@ -12,7 +12,7 @@ public class Graphic extends PApplet {
 	public static void main(String[] args) { 
 		
 		PApplet.main("Graphic");
-		//doGraphic();
+		
 	} 
 	
 	public static void setBoard(Gameboard boardT) {
@@ -74,7 +74,9 @@ public class Graphic extends PApplet {
 		textSize(40);
 		fill(0); 
 		text("Roll Dice",50,600);
-		
+		if(board.getSpace(3) instanceof Property) {
+			drawDisplay((Property)board.getSpace(3));
+		}
 		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && mousePressed) {
 			int[] option = Dice.rollDice();
 			
@@ -95,37 +97,8 @@ public class Graphic extends PApplet {
 	}
 	
 	public void drawProp(int i,char d,String c) {
-		switch (c) {									//set the color to the property's color
-			case "BROWN":
-				fill(139,69,19);
-				break;
-			case "LT BLUE":
-				fill(176,224,230);
-				break;
-			case "PURPLE":
-				fill(255,20,147);
-				break;
-			case "ORANGE":
-				fill(255,140,0);
-				break;
-			case "RED":
-				fill(255,0,0);
-				break;
-			case "YELLOW":
-				fill(255,255,0);
-				break;
-			case "GREEN":
-				fill(0,128,0);
-				break;
-			case "DK BLUE":
-				fill(0,0,255);
-				break;
-			case "GRAY":
-				fill(100);
-				break;
-			default:
-				fill(0);
-		}
+		int temp[] = convertColor(c);
+		fill(temp[0],temp[1],temp[2]);
 		
 		if(d=='t')
 			rect(i*50,40,50,10);
@@ -216,38 +189,9 @@ public class Graphic extends PApplet {
 			rect(501,x*50+15,8,20);
 	}
 	public void drawPlayer(int x,char s,Player play) {	//takes in the position on the side as int, the side it's on as char, and the player object
-		
-	switch (play.getColor()) {									//set the color to the property's color
-		case "BROWN":
-			fill(139,69,19);
-			break;
-		case "LT BLUE":
-			fill(176,224,230);
-			break;
-		case "PURPLE":
-			fill(255,20,147);
-			break;
-		case "ORANGE":
-			fill(255,140,0);
-			break;
-		case "RED":
-			fill(255,0,0);
-			break;
-		case "YELLOW":
-			fill(255,255,0);
-			break;
-		case "GREEN":
-			fill(0,128,0);
-			break;
-		case "DK BLUE":
-			fill(0,0,255);
-			break;
-		case "GRAY":
-			fill(100);
-			break;
-		default:
-			fill(0);
-	}
+		int temp[] = convertColor(play.getColor());
+		fill(temp[0],temp[1],temp[2]);
+	
 		/*if(x==0&&s=='t'&&!play.inJail) {
 			ellipse(10,10,15,15);
 		} 
@@ -265,5 +209,57 @@ public class Graphic extends PApplet {
 
 	public static int getSpae() {
 		return spae;
+	}
+	public void drawDisplay(Property prop) {
+		int c[] = convertColor(prop.getColor());
+		fill(255);
+		rect(175,125,200,300);
+		fill(c[0],c[1],c[2]);
+		rect(175,125,200,50);
+		fill(0);
+		textSize(20);
+		if(prop.getName().length()<=16)
+			text(prop.getName(),200,160);
+		else {
+			textSize(15);
+			text(prop.getName(),200,160);
+		}
+		text("RENT: $"+prop.getRent(),220,210);	//print Rent
+		textSize(15);
+		text("Purchase Cost:          $"+prop.getPrice(),180,235);
+		if(!prop.getColor().equals("GRAY"))
+			text("House Cost:              $"+prop.getHousePrice(),180,255);	//prints house cost
+		text("Mortgage Value:        $"+prop.getPrice()/2,180,275);				//prints mortgage value
+		if(prop.isOwned()) {
+			int pc[] =convertColor(prop.getOwner().getColor());			
+			fill(pc[0],pc[1],pc[2]);
+			text("Owned By: "+prop.getOwner().getName(),200,295);				//prints player name in their color
+		}
+		else
+			text("Owned By: Nobody",200,305);
+	}
+	public int[] convertColor(String color){
+		switch (color) {									//set the color to the property's color
+		case "BROWN":
+			return new int[] {139,69,19};
+		case "LT BLUE":
+			return new int[] {176,224,230};
+		case "PURPLE":
+			return new int[] {255,20,147};
+		case "ORANGE":
+			return new int[] {255,140,0};
+		case "RED":
+			return new int[] {255,0,0};
+		case "YELLOW":
+			return new int[] {255,255,0};
+		case "GREEN":
+			return new int[] {0,128,0};
+		case "DK BLUE":
+			return new int[] {0,0,255};
+		case "GRAY":
+			return new int[] {128,128,128};
+		default:
+			return new int[] {0,0,0};
+		}
 	}
 }
