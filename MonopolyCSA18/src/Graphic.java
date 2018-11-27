@@ -4,10 +4,10 @@ import processing.core.*;
 public class Graphic extends PApplet {
 
 	private static Gameboard board;
-	private static int playNum;
+	private static int playNum=1;
 	private static Player[] play;
-	private char side = 'l';
-	private static int spae = 10;
+	private char side;
+	private static int space = 10;
 	
 	public static void main(String[] args) { 
 		
@@ -49,22 +49,11 @@ public class Graphic extends PApplet {
 		sides(board);
 		
 		for(int i = 0; i<playNum; i++) {
-			drawPlayer(spae,side,play[i]);
+			drawPlayer(playerPos(play[i]),playerSide(play[i]),play[i]);
 		}
 		
 		//Switching sides for movement
-		if(spae == 0 && side == 'l') {
-			side = 't';
-			spae = 0;
-		}
-		if(spae == 10 && side == 't') {
-			side = 'r';
-			spae = 0;
-		}
-		if(spae == 10 && side == 'r') {
-			side = 'b';
-			spae = 0;
-		}
+		
 		
 		rect(550,0,275,75);
 		
@@ -78,14 +67,15 @@ public class Graphic extends PApplet {
 			drawDisplay((Property)board.getSpace(0));
 		}
 		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && mousePressed) {
-			int[] option = Dice.rollDice();
 			
-			play[1].playMove(option[0]+option[1]);
+			int[] option = Dice.rollDice();
+			System.out.println(option[1]);
+			play[0].playMove(option[0]+option[1]);
 		}
 	}
 	
-	public static void setSpae(int x) {
-		spae = x;
+	public static void setSpace(int x) {
+		space = x;
 	}
 	
 	public static void setPlayNum(int x) {
@@ -207,8 +197,8 @@ public class Graphic extends PApplet {
 		//}
 	}
 
-	public static int getSpae() {
-		return spae;
+	public static int getSpace() {
+		return space;
 	}
 	public void drawDisplay(Property prop) {
 		int c[] = convertColor(prop.getColor());
@@ -261,5 +251,52 @@ public class Graphic extends PApplet {
 		default:
 			return new int[] {0,0,0};
 		}
+	}
+	public char playerSide(Player play) {
+		int xpos=play.getXPos();
+		int ypos=play.getYPos();
+		char side =' ';
+		if(xpos==0) {
+			side='l';
+
+		}
+		else if(ypos==0) {
+			side='t';
+
+		}
+		else if(xpos==11) {
+			side='r';
+
+		}
+		else if(ypos==11) {
+			side='b';
+
+		}
+
+		return side;
+		
+	}
+	public int playerPos(Player play) {
+		int xpos=play.getXPos();
+		int ypos=play.getYPos();
+		int pos=0;
+		if(xpos==0) {
+
+			pos=ypos;
+		}
+		if(ypos==0) {
+	
+			pos=10-xpos;
+		}
+		if(xpos==11) {
+	
+			pos=10-ypos;
+		}
+		if(ypos==11) {
+
+			pos=xpos;
+		}
+		return pos;
+		
 	}
 }
