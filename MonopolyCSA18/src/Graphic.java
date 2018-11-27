@@ -7,6 +7,8 @@ public class Graphic extends PApplet {
 	private static int playNum=1;
 	private static Player[] play;
 	private char side;
+	private int[] option = {0,0};
+	private boolean roll;
 	private static int space = 10;
 	
 	public static void main(String[] args) { 
@@ -66,12 +68,11 @@ public class Graphic extends PApplet {
 		if(board.getSpace(0) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
 			drawDisplay((Property)board.getSpace(0));
 		}
-		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && mousePressed) {
-			
-			int[] option = Dice.rollDice();
-			System.out.println(option[1]);
-			play[0].playMove(option[0]+option[1]);
-		}
+		/*if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && roll) {
+			option = Dice.rollDice();
+			System.out.println(option[0] + option[1]);
+			play[0].playMove(option[0] + option[1], board);
+		}*/
 	}
 	
 	public static void setSpace(int x) {
@@ -264,11 +265,11 @@ public class Graphic extends PApplet {
 			side='t';
 
 		}
-		else if(xpos==11) {
+		else if(xpos==10) {
 			side='r';
 
 		}
-		else if(ypos==11) {
+		else if(ypos==10) {
 			side='b';
 
 		}
@@ -283,20 +284,27 @@ public class Graphic extends PApplet {
 		if(xpos==0) {
 
 			pos=ypos;
-		}
-		if(ypos==0) {
+		}else if(ypos==0) {
 	
 			pos=10-xpos;
-		}
-		if(xpos==11) {
+		}else if(xpos==10) {
 	
 			pos=10-ypos;
-		}
-		if(ypos==11) {
+		}else if(ypos==10) {
 
 			pos=xpos;
 		}
 		return pos;
 		
 	}
+	
+	public void mouseClicked() {
+		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625) {
+			option = Dice.rollDice();
+			System.out.println(option[0] + option[1]);
+			play[0].playMove(option[0] + option[1], board);
+		}
+	}
 }
+
+

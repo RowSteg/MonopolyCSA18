@@ -5,6 +5,7 @@ import java.util.ArrayList;
  	private int xPos;
  	private int yPos;
  	private int amountOfMoney;
+ 	private int space=0;
  	
  	private int railroadsOwned;
  	private int utilsOwned;
@@ -63,8 +64,16 @@ import java.util.ArrayList;
 		return utilsOwned;
 	}
 	
-	public void playMove(int x) {
-		Graphic.setSpae(Graphic.getSpae()+x);
+	public void playMove(int x, Gameboard board) {
+		this.space+=x;
+		
+		while(space+1>board.getSize()) {
+			space-=board.getSize();
+		}
+		
+		Space spac = board.getSpace(this.space);
+		this.setPosition(spac.getXPos(), spac.getYPos());
+		
 	}
 	 
 	//buy stuff

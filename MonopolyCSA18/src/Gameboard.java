@@ -112,6 +112,10 @@ public class Gameboard {
 		return (ArrayList<Space>) board.clone();
 	}
 	
+	public int getSize() {
+		return board.size();
+	}
+	
 	public String toString() {
 		String fin = "";
 		
