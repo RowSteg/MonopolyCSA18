@@ -74,6 +74,7 @@ import java.util.ArrayList;
 		Space spac = board.getSpace(this.space);
 		this.setPosition(spac.getXPos(), spac.getYPos());
 		
+		System.out.println("Player At: (" + this.xPos + "," + this.yPos + ")");
 	}
 	 
 	//buy stuff

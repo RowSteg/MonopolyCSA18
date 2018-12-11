@@ -9,6 +9,7 @@ public class Graphic extends PApplet {
 	private char side;
 	private int[] option = {0,0};
 	private boolean roll;
+	private int turn = 1;
 	private static int space = 10;
 	
 	public static void main(String[] args) { 
@@ -81,6 +82,7 @@ public class Graphic extends PApplet {
 	
 	public static void setPlayNum(int x) {
 		playNum = x;
+		
 	}
 	
 	public static Player[] getPlayers() {
@@ -286,10 +288,10 @@ public class Graphic extends PApplet {
 			pos=ypos;
 		}else if(ypos==0) {
 	
-			pos=10-xpos;
+			pos=xpos;
 		}else if(xpos==10) {
 	
-			pos=10-ypos;
+			pos=ypos;
 		}else if(ypos==10) {
 
 			pos=xpos;
@@ -302,7 +304,11 @@ public class Graphic extends PApplet {
 		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625) {
 			option = Dice.rollDice();
 			System.out.println(option[0] + option[1]);
-			play[0].playMove(option[0] + option[1], board);
+			play[turn-1].playMove(option[0] + option[1], board);
+			turn++;
+			if(turn > playNum) {
+				turn = 1;
+			}
 		}
 	}
 }
