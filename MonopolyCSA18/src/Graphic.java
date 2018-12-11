@@ -204,6 +204,7 @@ public class Graphic extends PApplet {
 		return space;
 	}
 	public void drawDisplay(Property prop) {
+		
 		int c[] = convertColor(prop.getColor());
 		fill(255);
 		rect(175,125,200,300);
@@ -211,7 +212,7 @@ public class Graphic extends PApplet {
 		rect(175,125,200,50);
 		fill(0);
 		textSize(20);
-		if(prop.getName().length()<=16)
+		if(prop.getName().length()<=15)
 			text(prop.getName(),200,160);
 		else {
 			textSize(15);
@@ -230,6 +231,12 @@ public class Graphic extends PApplet {
 		}
 		else
 			text("Owned By: Nobody",200,305);
+	}
+	public void clearDisplay() {
+		noStroke();
+		fill(205);
+		rect(100, 100, 350, 350);
+		stroke(0);
 	}
 	public int[] convertColor(String color){			//takes in name of color and gives an array of rgb values of that color. note: All caps pls
 		switch (color) {									
@@ -303,11 +310,15 @@ public class Graphic extends PApplet {
 	public void mouseClicked() {
 		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625) {
 			option = Dice.rollDice();
-			System.out.println(option[0] + option[1]);
 			play[turn-1].playMove(option[0] + option[1], board);
 			turn++;
 			if(turn > playNum) {
 				turn = 1;
+			}
+			if(board.getSpace(play[turn-1].getSpace()) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
+				drawDisplay((Property)board.getSpace(play[turn-1].getSpace()));
+			}else {
+				clearDisplay();
 			}
 		}
 	}
