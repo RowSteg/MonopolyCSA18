@@ -16,7 +16,7 @@ public class CardStack {
 		try {
 			Scanner in = new Scanner(new File(inFile));
 			while(in.hasNextLine()) {
-				cards.add(in.nextLine().split(","));
+				cards.add(in.nextLine().split(";"));
 			}
 			for(int i = 0; i < cards.size(); i++) {
 				String[] temp = cards.get(i);

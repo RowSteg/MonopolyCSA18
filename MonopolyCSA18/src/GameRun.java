@@ -13,13 +13,10 @@ public class GameRun {
 		Graphic.setPlayNum(x);
 		Graphic.main(args);
 		
-		/*CardStack chanceCards = new CardStack("RawChanceList.txt");
+		CardStack chanceCards = new CardStack("RawChanceList.txt");
 		CardStack communityChestCards = new CardStack("RawCCList.txt");
 		chanceCards.shuffleCards();
 		communityChestCards.shuffleCards();
-		
-		System.out.println(chanceCards.toString());
-		System.out.println(communityChestCards.toString());*/
 	}
 
 }
