@@ -10,6 +10,8 @@ public class Graphic extends PApplet {
 	private int[] option = {0,0};
 	private boolean roll;
 	private int turn = 1;
+	private boolean owned;
+	private Property prop;
 	private static int space = 10;
 	
 	public static void main(String[] args) { 
@@ -69,11 +71,15 @@ public class Graphic extends PApplet {
 		if(board.getSpace(0) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
 			drawDisplay((Property)board.getSpace(0));
 		}
+		
+		text("End Turn",325,600);
 		/*if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && roll) {
 			option = Dice.rollDice();
 			System.out.println(option[0] + option[1]);
 			play[0].playMove(option[0] + option[1], board);
 		}*/
+		
+		System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
 	}
 	
 	public static void setSpace(int x) {
@@ -203,7 +209,8 @@ public class Graphic extends PApplet {
 	public static int getSpace() {
 		return space;
 	}
-	public void drawDisplay(Property prop) {
+	public void drawDisplay(Property proper) {
+		prop = proper;
 		
 		int c[] = convertColor(prop.getColor());
 		fill(255);
@@ -227,10 +234,20 @@ public class Graphic extends PApplet {
 		if(prop.isOwned()) {
 			int pc[] =convertColor(prop.getOwner().getColor());			
 			fill(pc[0],pc[1],pc[2]);
-			text("Owned By: "+prop.getOwner().getName(),200,295);				//prints player name in their color
+			text("Owned By: "+prop.getOwner().getName(),200,305);				//prints player name in their color
+			if(prop.getOwner() != play[turn-1]) {
+				play[turn-1].setAmountOfMoney(play[turn-1].getAmountOfMoney() - prop.getRent());
+			}
 		}
-		else
+		else {
 			text("Owned By: Nobody",200,305);
+			fill(255);
+			rect(200, 350, 150, 50);
+			textSize(22);
+			fill(0);
+			text("Buy Property", 210, 380);
+			owned = false;
+		}
 	}
 	public void clearDisplay() {
 		noStroke();
@@ -239,7 +256,7 @@ public class Graphic extends PApplet {
 		stroke(0);
 	}
 	public int[] convertColor(String color){			//takes in name of color and gives an array of rgb values of that color. note: All caps pls
-		switch (color) {									
+		switch (color.toUpperCase()) {									
 		case "BROWN":
 			return new int[] {139,69,19};
 		case "LT BLUE":
@@ -311,14 +328,35 @@ public class Graphic extends PApplet {
 		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625) {
 			option = Dice.rollDice();
 			play[turn-1].playMove(option[0] + option[1], board);
+			if(board.getSpace(play[turn-1].getSpace()) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
+				//clearDisplay();
+				drawDisplay((Property)board.getSpace(play[turn-1].getSpace()));
+			}else {
+				clearDisplay();
+			}
+		}
+		
+		if(200<mouseX && mouseX<350 && 350<mouseY && mouseY<400) {
+			owned = true;
+			prop.setOwner(play[turn-1]);
+			if(board.getSpace(play[turn-1].getSpace()) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
+				//clearDisplay();
+				drawDisplay((Property)board.getSpace(play[turn-1].getSpace()));
+			}else {
+				clearDisplay();
+			}
+			/*
 			turn++;
 			if(turn > playNum) {
 				turn = 1;
 			}
-			if(board.getSpace(play[turn-1].getSpace()) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
-				drawDisplay((Property)board.getSpace(play[turn-1].getSpace()));
-			}else {
-				clearDisplay();
+			*/
+		}
+		
+		if(275<mouseX && mouseX<550 && 550<mouseY && mouseY<625) {
+			turn++;
+			if(turn > playNum) {
+				turn = 1;
 			}
 		}
 	}
