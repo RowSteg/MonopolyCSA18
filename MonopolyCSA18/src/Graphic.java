@@ -79,7 +79,7 @@ public class Graphic extends PApplet {
 			play[0].playMove(option[0] + option[1], board);
 		}*/
 		
-		System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
+		//System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
 	}
 	
 	public static void setSpace(int x) {
@@ -233,7 +233,8 @@ public class Graphic extends PApplet {
 		text("Mortgage Value:        $"+prop.getPrice()/2,180,275);				//prints mortgage value
 		if(prop.isOwned()) {
 			int pc[] =convertColor(prop.getOwner().getColor());			
-			fill(pc[0],pc[1],pc[2]);
+			//fill(pc[0],pc[1],pc[2]);
+			fill(0);
 			text("Owned By: "+prop.getOwner().getName(),200,305);				//prints player name in their color
 			if(prop.getOwner() != play[turn-1]) {
 				play[turn-1].setAmountOfMoney(play[turn-1].getAmountOfMoney() - prop.getRent());
@@ -334,6 +335,8 @@ public class Graphic extends PApplet {
 			}else {
 				clearDisplay();
 			}
+			
+			System.out.println("dice rolled");
 		}
 		
 		if(200<mouseX && mouseX<350 && 350<mouseY && mouseY<400) {
@@ -345,6 +348,8 @@ public class Graphic extends PApplet {
 			}else {
 				clearDisplay();
 			}
+			
+			System.out.println("property bought");
 			/*
 			turn++;
 			if(turn > playNum) {
@@ -358,6 +363,7 @@ public class Graphic extends PApplet {
 			if(turn > playNum) {
 				turn = 1;
 			}
+			System.out.println("turn ended");
 		}
 	}
 }
