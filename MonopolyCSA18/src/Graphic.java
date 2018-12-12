@@ -12,6 +12,7 @@ public class Graphic extends PApplet {
 	private int turn = 1;
 	private boolean owned;
 	private Property prop;
+	private boolean rolled = false;
 	private static int space = 10;
 	
 	public static void main(String[] args) { 
@@ -326,7 +327,7 @@ public class Graphic extends PApplet {
 	}
 	
 	public void mouseClicked() {
-		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625) {
+		if(0<mouseX && mouseX<275 && 550<mouseY && mouseY<625 && rolled  == false) {
 			option = Dice.rollDice();
 			play[turn-1].playMove(option[0] + option[1], board);
 			if(board.getSpace(play[turn-1].getSpace()) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
@@ -336,6 +337,7 @@ public class Graphic extends PApplet {
 				clearDisplay();
 			}
 			
+			rolled = true;
 			System.out.println("dice rolled");
 		}
 		
@@ -365,6 +367,8 @@ public class Graphic extends PApplet {
 			if(turn > playNum) {
 				turn = 1;
 			}
+			
+			rolled = false;
 			System.out.println("turn ended");
 		}
 	}
