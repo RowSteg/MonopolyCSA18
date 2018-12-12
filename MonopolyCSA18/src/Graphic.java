@@ -342,6 +342,7 @@ public class Graphic extends PApplet {
 		if(200<mouseX && mouseX<350 && 350<mouseY && mouseY<400) {
 			owned = true;
 			prop.setOwner(play[turn-1]);
+			play[turn-1].setAmountOfMoney(play[turn-1].getAmountOfMoney() - prop.getPrice());
 			if(board.getSpace(play[turn-1].getSpace()) instanceof Property) {		//this code is just for debugging the property get rid of it if it makes you angry
 				//clearDisplay();
 				drawDisplay((Property)board.getSpace(play[turn-1].getSpace()));
@@ -359,6 +360,7 @@ public class Graphic extends PApplet {
 		}
 		
 		if(275<mouseX && mouseX<550 && 550<mouseY && mouseY<625) {
+			System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
 			turn++;
 			if(turn > playNum) {
 				turn = 1;
