@@ -239,6 +239,7 @@ public class Graphic extends PApplet {
 			text("Owned By: "+prop.getOwner().getName(),200,305);				//prints player name in their color
 			if(prop.getOwner() != play[turn-1]) {
 				play[turn-1].setAmountOfMoney(play[turn-1].getAmountOfMoney() - prop.getRent());
+				prop.getOwner().setAmountOfMoney(prop.getOwner().getAmountOfMoney() + prop.getRent());
 			}
 		}
 		else {
