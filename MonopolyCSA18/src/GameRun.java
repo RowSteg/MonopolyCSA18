@@ -8,7 +8,13 @@ public class GameRun {
 		
 		Scanner in = new Scanner(System.in);
 		System.out.println("How Many Players?");
-		int x = in.nextInt();  
+		int x = 0;
+		if(in.nextInt() > 1) {
+		x = in.nextInt(); 
+		}
+		else {
+			System.out.println("Number of players must be greater than 1");
+		}
 		Graphic.setBoard(yeet);
 		Graphic.setPlayNum(x);
 		Graphic.main(args);
