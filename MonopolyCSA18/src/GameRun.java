@@ -8,15 +8,14 @@ public class GameRun {
 		
 		Scanner in = new Scanner(System.in);
 		System.out.println("How Many Players?");
-		int x = 0;
-		if(in.nextInt() > 1) {
-		x = in.nextInt(); 
+		int x = in.nextInt();
+		if(x > 1 && x <= 8) {
+		    Graphic.setPlayNum(x);
 		}
 		else {
-			System.out.println("Number of players must be greater than 1");
+			System.out.println("Number of players must be greater than 1 and less than or equal to 8");
 		}
 		Graphic.setBoard(yeet);
-		Graphic.setPlayNum(x);
 		Graphic.main(args);
 		
 		CardStack chanceCards = new CardStack("RawChanceList.txt");
