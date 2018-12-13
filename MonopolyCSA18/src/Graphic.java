@@ -121,7 +121,23 @@ public class Graphic extends PApplet {
 				drawProp(i,'t',color);
 				drawHouse(i,'t',num);
 			}
-			
+			else if (spac instanceof ChanceChest) {
+				ChanceChest cc = (ChanceChest)spac;
+				
+			}
+			else if (spac instanceof Railroad) {
+				Railroad rr = (Railroad)spac;
+			}
+			else if (spac instanceof Tax) {
+				Tax tax = (Tax)spac;	
+			}
+			else {
+				Space space = (Space)spac;
+				if(space.getName().equals("Go")){
+					textSize(50);
+					text("GO", 520, 20);
+				}
+			}
 		}
 		for (int i=1;i<=9;i++) {
 			Space spac = board.getSpace(0,i);
@@ -131,6 +147,24 @@ public class Graphic extends PApplet {
 				int num = prop.getLevel();
 				drawProp(i,'l',color);
 				drawHouse(i,'t',num);
+			}
+			else if (spac instanceof ChanceChest) {
+				ChanceChest cc = (ChanceChest)spac;
+				
+			}
+			else if (spac instanceof Railroad) {
+				Railroad rr = (Railroad)spac;
+			}
+			else if (spac instanceof Tax) {
+				Tax tax = (Tax)spac;	
+			}
+			else {
+				Space space = (Space)spac;
+				//if(space.getName().equals("Go")){
+				fill(0);
+					textSize(30);
+					text("GO", 2, 535);
+			//	}
 			}
 			
 		}
@@ -143,6 +177,23 @@ public class Graphic extends PApplet {
 				drawProp(i,'b',color);
 				drawHouse(i,'t',num);
 			}
+			else if (spac instanceof ChanceChest) {
+				ChanceChest cc = (ChanceChest)spac;
+				
+			}
+			else if (spac instanceof Railroad) {
+				Railroad rr = (Railroad)spac;
+			}
+			else if (spac instanceof Tax) {
+				Tax tax = (Tax)spac;	
+			}
+			else {
+				Space space = (Space)spac;
+				if(space.getName().equals("Go")){
+					textSize(50);
+					text("GO", 520, 20);
+				}
+			}
 			
 		}
 		for (int i=1;i<=9;i++) {
@@ -153,6 +204,23 @@ public class Graphic extends PApplet {
 				int num = prop.getLevel();
 				drawProp(i,'r',color);
 				drawHouse(i,'t',num);
+			}
+			else if (spac instanceof ChanceChest) {
+				ChanceChest cc = (ChanceChest)spac;
+				
+			}
+			else if (spac instanceof Railroad) {
+				Railroad rr = (Railroad)spac;
+			}
+			else if (spac instanceof Tax) {
+				Tax tax = (Tax)spac;	
+			}
+			else {
+				Space space = (Space)spac;
+				if(space.getName().equals("Go")){
+					textSize(50);
+					text("GO", 520, 20);
+				}
 			}
 			
 		}
@@ -239,6 +307,7 @@ public class Graphic extends PApplet {
 			text("Owned By: "+prop.getOwner().getName(),200,305);				//prints player name in their color
 			if(prop.getOwner() != play[turn-1]) {
 				play[turn-1].setAmountOfMoney(play[turn-1].getAmountOfMoney() - prop.getRent());
+				prop.getOwner().setAmountOfMoney(prop.getOwner().getAmountOfMoney() + prop.getRent());
 			}
 		}
 		else {
@@ -353,6 +422,7 @@ public class Graphic extends PApplet {
 			}
 			
 			System.out.println("property bought");
+			System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
 			/*
 			turn++;
 			if(turn > playNum) {
@@ -362,13 +432,42 @@ public class Graphic extends PApplet {
 		}
 		
 		if(275<mouseX && mouseX<550 && 550<mouseY && mouseY<625) {
-			System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
-			turn++;
-			if(turn > playNum) {
-				turn = 1;
+			if(playNum <= 1) {
+				System.out.println(play[turn-1].getName() + " has won with " + play[turn-1].getAmountOfMoney() + "!");
+				rolled = true;
 			}
-			
-			rolled = false;
+			System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
+			if(play[turn-1].getAmountOfMoney() <=0) {
+				System.out.println(play[turn-1].getName() + " has lost");
+				turn++;
+				while(turn <= playNum) {
+					System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
+					turn++;
+				}
+				
+				turn = 1;
+				Player[] temp = new Player[playNum-1];
+				for(int i=0,j=0; i<playNum; i++) { //Creates Players
+					if(play[i].getAmountOfMoney() > 0) {
+						temp[j] = play[i];
+						j++;
+					}
+				}
+				playNum--;
+				play = temp;
+				
+				if(playNum <= 0) {
+					System.out.println(play[turn-1].getName() + " has won with " + play[turn-1].getAmountOfMoney() + "!");
+				}
+				rolled = false;
+				
+			}else {
+				turn++;
+				if(turn > playNum) {
+					turn = 1;
+				}
+				rolled = false;
+			}
 			System.out.println("turn ended");
 		}
 	}
