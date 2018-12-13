@@ -429,7 +429,7 @@ public class Graphic extends PApplet {
 			System.out.println("dice rolled");
 		}
 		
-		if(200<mouseX && mouseX<350 && 350<mouseY && mouseY<400) {
+		if(200<mouseX && mouseX<350 && 350<mouseY && mouseY<400 && rolled) {
 			owned = true;
 			prop.setOwner(play[turn-1]);
 			play[turn-1].setAmountOfMoney(play[turn-1].getAmountOfMoney() - prop.getPrice());
