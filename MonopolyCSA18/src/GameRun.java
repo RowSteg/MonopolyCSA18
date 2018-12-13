@@ -23,6 +23,6 @@ public class GameRun {
 		CardStack communityChestCards = new CardStack("RawCCList.txt");
 		chanceCards.shuffleCards();
 		communityChestCards.shuffleCards();
-	}
+	} 
 
 }
