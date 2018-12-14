@@ -69,6 +69,7 @@ import java.util.ArrayList;
 		
 		while(space+1>board.getSize()) {
 			space-=board.getSize();
+			this.amountOfMoney+=200;
 		}
 		
 		Space spac = board.getSpace(this.space);
@@ -143,10 +144,10 @@ import java.util.ArrayList;
 			Property current = (Property) temp;
 			if(current.isOwned()) {
 				//pay rent
-				amountOfMoney -= current.getRent();
+				//amountOfMoney -= current.getRent();
 			}
 			else {
-				this.buyProperty(current);
+				//this.buyProperty(current);
 				//player must either buy or auction the property. Never a time when it is not bought when landed on.
 				
 				//TODO auction functionality still needed
@@ -184,6 +185,8 @@ import java.util.ArrayList;
 				//free parking does nothing, so no case
 			}
 		}
+		
+		System.out.println(this.name + " has " + this.amountOfMoney);
 	}
 	
 	public int getSpace() {

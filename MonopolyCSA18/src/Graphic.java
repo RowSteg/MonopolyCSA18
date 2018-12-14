@@ -226,7 +226,7 @@ public class Graphic extends PApplet {
 			textSize(15);
 			text(prop.getName(),200,160);
 		}
-		text("RENT: $"+prop.getRent(),220,210);	//print Rent
+		text("RENT: $"+prop.getRent(),220,210);	//print Rent 
 		textSize(15);
 		text("Purchase Cost:          $"+prop.getPrice(),180,235);
 		if(!prop.getColor().equals("GRAY"))

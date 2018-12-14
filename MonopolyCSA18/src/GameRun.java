@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class GameRun {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		Gameboard yeet = new Gameboard("RawSpacesList.txt");
 		
 		Scanner in = new Scanner(System.in);
