@@ -69,7 +69,11 @@ import java.util.ArrayList;
 		
 		while(space+1>board.getSize()) {
 			space-=board.getSize();
+
 			this.amountOfMoney+=200;
+
+			this.amountOfMoney += 200;
+
 		}
 		
 		Space spac = board.getSpace(this.space);

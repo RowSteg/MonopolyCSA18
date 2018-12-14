@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import processing.core.*;
@@ -34,6 +36,7 @@ public class Graphic extends PApplet {
 			Scanner in = new Scanner(System.in);
 			System.out.println("Name:");
 			String nam = in.nextLine();
+			printColors();
 			Scanner in2 = new Scanner(System.in);
 			System.out.println("Color:");
 			String col = in2.nextLine();
@@ -121,7 +124,23 @@ public class Graphic extends PApplet {
 				drawProp(i,'t',color);
 				drawHouse(i,'t',num);
 			}
-			
+			else if (spac instanceof ChanceChest) {
+				ChanceChest cc = (ChanceChest)spac;
+				
+			}
+			else if (spac instanceof Railroad) {
+				Railroad rr = (Railroad)spac;
+			}
+			else if (spac instanceof Tax) {
+				Tax tax = (Tax)spac;	
+			}
+			else {
+				Space space = (Space)spac;
+				if(space.getName().equals("Go")){
+					textSize(50);
+					text("GO", 520, 20);
+				}
+			}
 		}
 		for (int i=1;i<=9;i++) {
 			Space spac = board.getSpace(0,i);
@@ -131,6 +150,24 @@ public class Graphic extends PApplet {
 				int num = prop.getLevel();
 				drawProp(i,'l',color);
 				drawHouse(i,'t',num);
+			}
+			else if (spac instanceof ChanceChest) {
+				ChanceChest cc = (ChanceChest)spac;
+				
+			}
+			else if (spac instanceof Railroad) {
+				Railroad rr = (Railroad)spac;
+			}
+			else if (spac instanceof Tax) {
+				Tax tax = (Tax)spac;	
+			}
+			else {
+				Space space = (Space)spac;
+				//if(space.getName().equals("Go")){
+				fill(0);
+					textSize(30);
+					text("GO", 2, 535);
+			//	}
 			}
 			
 		}
@@ -143,6 +180,23 @@ public class Graphic extends PApplet {
 				drawProp(i,'b',color);
 				drawHouse(i,'t',num);
 			}
+			else if (spac instanceof ChanceChest) {
+				ChanceChest cc = (ChanceChest)spac;
+				
+			}
+			else if (spac instanceof Railroad) {
+				Railroad rr = (Railroad)spac;
+			}
+			else if (spac instanceof Tax) {
+				Tax tax = (Tax)spac;	
+			}
+			else {
+				Space space = (Space)spac;
+				if(space.getName().equals("Go")){
+					textSize(50);
+					text("GO", 520, 20);
+				}
+			}
 			
 		}
 		for (int i=1;i<=9;i++) {
@@ -153,6 +207,23 @@ public class Graphic extends PApplet {
 				int num = prop.getLevel();
 				drawProp(i,'r',color);
 				drawHouse(i,'t',num);
+			}
+			else if (spac instanceof ChanceChest) {
+				ChanceChest cc = (ChanceChest)spac;
+				
+			}
+			else if (spac instanceof Railroad) {
+				Railroad rr = (Railroad)spac;
+			}
+			else if (spac instanceof Tax) {
+				Tax tax = (Tax)spac;	
+			}
+			else {
+				Space space = (Space)spac;
+				if(space.getName().equals("Go")){
+					textSize(50);
+					text("GO", 520, 20);
+				}
 			}
 			
 		}
@@ -258,29 +329,45 @@ public class Graphic extends PApplet {
 		rect(100, 100, 350, 350);
 		stroke(0);
 	}
-	public int[] convertColor(String color){			//takes in name of color and gives an array of rgb values of that color. note: All caps pls
-		switch (color.toUpperCase()) {									
-		case "BROWN":
-			return new int[] {139,69,19};
-		case "LT BLUE":
-			return new int[] {176,224,230};
-		case "PURPLE":
-			return new int[] {255,20,147};
-		case "ORANGE":
-			return new int[] {255,140,0};
-		case "RED":
-			return new int[] {255,0,0};
-		case "YELLOW":
-			return new int[] {255,255,0};
-		case "GREEN":
-			return new int[] {0,128,0};
-		case "DK BLUE":
-			return new int[] {0,0,255};
-		case "GRAY":
-			return new int[] {128,128,128};
-		default:
-			return new int[] {0,0,0};
+	public static void printColors() {
+		System.out.println("color options:");
+		try {
+			Scanner input = new Scanner(new File("colors.txt"));
+			
+			while(input.hasNextLine()) {
+				String[] c=input.nextLine().split(",");
+				for(int i=0;i<c.length;i+=4) {
+					System.out.print(c[i]+", ");
+					
+				}
+			
+			}
+			input.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
+		System.out.println();
+	}
+	public static int[] convertColor(String color){			//takes in name of color and gives an array of rgb values of that color. note: All caps pls
+		try {
+			Scanner input = new Scanner(new File("colors.txt"));
+			
+			while(input.hasNextLine()) {
+				String[] c=input.nextLine().split(",");
+				for(int i=0;i<c.length;i++) {
+					if(c[i].equals(color.toLowerCase())) {
+						return new int[] {Integer.parseInt(c[i+1]),Integer.parseInt(c[i+2]),Integer.parseInt(c[i+3])};
+					}
+				}
+			
+			}
+			input.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return new int[] {0,0,0};
+		
 	}
 	public char playerSide(Player play) {
 		int xpos=play.getXPos();
@@ -342,7 +429,7 @@ public class Graphic extends PApplet {
 			System.out.println("dice rolled");
 		}
 		
-		if(200<mouseX && mouseX<350 && 350<mouseY && mouseY<400) {
+		if(200<mouseX && mouseX<350 && 350<mouseY && mouseY<400 && rolled) {
 			owned = true;
 			prop.setOwner(play[turn-1]);
 			play[turn-1].setAmountOfMoney(play[turn-1].getAmountOfMoney() - prop.getPrice());
@@ -354,6 +441,7 @@ public class Graphic extends PApplet {
 			}
 			
 			System.out.println("property bought");
+			System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
 			/*
 			turn++;
 			if(turn > playNum) {
@@ -363,13 +451,42 @@ public class Graphic extends PApplet {
 		}
 		
 		if(275<mouseX && mouseX<550 && 550<mouseY && mouseY<625) {
-			System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
-			turn++;
-			if(turn > playNum) {
-				turn = 1;
+			if(playNum <= 1) {
+				System.out.println(play[turn-1].getName() + " has won with " + play[turn-1].getAmountOfMoney() + "!");
+				rolled = true;
 			}
-			
-			rolled = false;
+			System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
+			if(play[turn-1].getAmountOfMoney() <=0) {
+				System.out.println(play[turn-1].getName() + " has lost");
+				turn++;
+				while(turn <= playNum) {
+					System.out.println(play[turn-1].getName() + " has " + play[turn-1].getAmountOfMoney());
+					turn++;
+				}
+				
+				turn = 1;
+				Player[] temp = new Player[playNum-1];
+				for(int i=0,j=0; i<playNum; i++) { //Creates Players
+					if(play[i].getAmountOfMoney() > 0) {
+						temp[j] = play[i];
+						j++;
+					}
+				}
+				playNum--;
+				play = temp;
+				
+				if(playNum <= 0) {
+					System.out.println(play[turn-1].getName() + " has won with " + play[turn-1].getAmountOfMoney() + "!");
+				}
+				rolled = false;
+				
+			}else {
+				turn++;
+				if(turn > playNum) {
+					turn = 1;
+				}
+				rolled = false;
+			}
 			System.out.println("turn ended");
 		}
 	}
